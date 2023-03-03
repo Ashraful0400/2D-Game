@@ -1,2 +1,5 @@
 game276\GameWindow.class
 game276\GamePanel.class
+game276\Player.class
+game276\App.class
+game276\InputHandler.class

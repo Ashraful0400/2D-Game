@@ -18,7 +18,7 @@ public class GameWindow {
         gameWindow.setLocationRelativeTo(null);
         gameWindow.setVisible(true);
 
-
+        gp.startThread();
         
     }
     
