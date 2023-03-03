@@ -7,10 +7,9 @@ package game276;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
         GameWindow tmp = new GameWindow();
-        tmp.setupAndMakeWindow();
+        tmp.runGame();
         System.out.println( "Hello World!" );
     }
 }

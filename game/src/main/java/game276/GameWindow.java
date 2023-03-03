@@ -2,7 +2,7 @@ package game276;
 import javax.swing.JFrame;
 
 public class GameWindow {
-    public void setupAndMakeWindow() {
+    public void runGame() {
         JFrame gameWindow = new JFrame();
 
         // When user closes window, exit the entire program

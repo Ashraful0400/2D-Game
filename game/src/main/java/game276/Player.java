@@ -6,21 +6,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-public class Player extends JPanel {
-    public int x;
-    public int y; //y increase -> move downward
-    public int speed;
+public class Player extends MovableCharacter {
     public GamePanel gp;
-
     public InputHandler keyboardInput = new InputHandler();
 
-    Player(GamePanel gp) {
+    Player(GamePanel gp, int startingX, int startingY) {
         this.gp = gp;
-        // Default positions
-        this.x = 100;
-        this.y = 100;
-        this.speed = 1;
-        this.addKeyListener(keyboardInput);
+        // Default position
+        this.x = startingX;
+        this.y = startingY;
+        this.speed = 5;
     }
 
     public void move() {
@@ -35,6 +30,7 @@ public class Player extends JPanel {
         }
     }
 
+    // Just draws a rectangle for now
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.white);

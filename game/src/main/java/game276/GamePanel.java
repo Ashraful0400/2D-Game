@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gThread;
 
-    Player player = new Player(this);
+    Player player = new Player(this, 100, 100);
     InputHandler keyI = player.keyboardInput; //Only for adding KeyListener
 
     int fps = 60;
@@ -49,6 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             update();
 
+            // Wait for redrawing (for 60 FPS)
             Double remainingTime = nextDrawTime - System.nanoTime(); // Remaining time after update()
             remainingTime /= 1000000; // Converting to miliseconds
             try {
