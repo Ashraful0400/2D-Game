@@ -6,29 +6,31 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-public class Player {
+public class Player extends JPanel {
     public int x;
     public int y; //y increase -> move downward
     public int speed;
     public GamePanel gp;
 
-    public InputHandler input = new InputHandler();
+    public InputHandler keyboardInput = new InputHandler();
 
     Player(GamePanel gp) {
         this.gp = gp;
         // Default positions
         this.x = 100;
         this.y = 100;
+        this.speed = 1;
+        this.addKeyListener(keyboardInput);
     }
 
     public void move() {
-        if (input.upKeyPressed) {
+        if (keyboardInput.upKeyPressed) {
             y -= speed;
-        } else if (input.leftKeyPressed) {
+        } else if (keyboardInput.leftKeyPressed) {
             x -= speed;
-        } else if (input.downKeyPressed) {
+        } else if (keyboardInput.downKeyPressed) {
             y += speed;
-        } else if (input.rightKeyPressed) {
+        } else if (keyboardInput.rightKeyPressed) {
             x += speed;
         }
     }

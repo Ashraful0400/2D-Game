@@ -22,13 +22,10 @@ public class InputHandler implements KeyListener {
             System.out.println("W");
             upKeyPressed = true;
         } else if (input == KeyEvent.VK_A) {
-            System.out.println("A");
             leftKeyPressed = true;
         } else if (input == KeyEvent.VK_S) {
-            System.out.println("S");
             downKeyPressed = true;
         } else if (input == KeyEvent.VK_D) {
-            System.out.println("D");
             rightKeyPressed = true;
         }
     }

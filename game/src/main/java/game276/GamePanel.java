@@ -22,13 +22,15 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gThread;
 
     Player player = new Player(this);
-    InputHandler keyH = player.input;
+    InputHandler keyI = player.keyboardInput; //Only for adding KeyListener
+
+    int fps = 60;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true); // Improves game rendering performance
-        this.addKeyListener(keyH);
+        this.addKeyListener(keyI);
         this.setFocusable(true);
     }
 
@@ -39,17 +41,28 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void run() {
         //this.startThread();
+        Double drawInterval = 1000000000.0 / fps;
+        Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
+
         while (gThread != null) {
             System.out.println("YOOOOLOOOOOOOOOOOOOOO");
+
             update();
 
-            repaint();
-
+            Double remainingTime = nextDrawTime - System.nanoTime(); // Remaining time after update()
+            remainingTime /= 1000000; // Converting to miliseconds
             try {
-                Thread.sleep((long) 1000); // TODO - Random big number for now
+                if (remainingTime < 0) {
+                    remainingTime = 0.0;
+                }
+                Thread.sleep(remainingTime.longValue()); // TODO - Random big number for now
+                nextDrawTime += drawInterval;
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            repaint();
+
         }
     }
 
@@ -57,18 +70,15 @@ public class GamePanel extends JPanel implements Runnable {
         player.move();
     }
 
-    public void repaint() {
-    }
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        /* Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.white);
-        g2D.fillRect(100, 100, tileSize, tileSize);
-        g2D.dispose(); // Free resources related to g2D */
 
         player.repaint(g);
+
+
 
     }
 
