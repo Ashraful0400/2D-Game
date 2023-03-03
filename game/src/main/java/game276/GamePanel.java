@@ -22,7 +22,6 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gThread;
 
     Player player = new Player(this, 100, 100);
-    InputHandler keyI = player.keyboardInput; //Only for adding KeyListener
 
     int fps = 60;
 
@@ -30,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true); // Improves game rendering performance
-        this.addKeyListener(keyI);
+        this.addKeyListener(player.keyboardInput);
         this.setFocusable(true);
     }
 
@@ -40,7 +39,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void run() {
-        //this.startThread();
         Double drawInterval = 1000000000.0 / fps;
         Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
 
@@ -56,7 +54,7 @@ public class GamePanel extends JPanel implements Runnable {
                 if (remainingTime < 0) {
                     remainingTime = 0.0;
                 }
-                Thread.sleep(remainingTime.longValue()); // TODO - Random big number for now
+                Thread.sleep(remainingTime.longValue());
                 nextDrawTime += drawInterval;
             } catch (Exception e) {
                 e.printStackTrace();
