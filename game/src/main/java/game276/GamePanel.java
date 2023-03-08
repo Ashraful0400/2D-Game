@@ -25,6 +25,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     int fps = 60;
 
+    boolean isGameOver;
+
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);
@@ -34,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void startThread() {
+        isGameOver = false;
         gThread = new Thread(this);
         gThread.start();
     }

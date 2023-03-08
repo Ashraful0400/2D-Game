@@ -7,14 +7,11 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class Player extends MovableCharacter {
-    public GamePanel gp;
+    
     public InputHandler keyboardInput = new InputHandler();
 
     Player(GamePanel gp, int startingX, int startingY) {
-        this.gp = gp;
-        // Default position
-        this.x = startingX;
-        this.y = startingY;
+        super(gp, startingX, startingY);
         this.speed = 5;
     }
 
@@ -30,7 +27,7 @@ public class Player extends MovableCharacter {
         }
     }
 
-    // Just draws a rectangle for now
+    // Just draws a rectangle for now, Replace with super class method that will draw a sprite
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.white);
