@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 
 public class GamePanel extends JPanel implements Runnable {
@@ -21,9 +22,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gThread;
 
-    Player player = new Player(this, 100, 100);
-
     int fps = 60;
+
+
+    Player player = new Player(this, 100, 100);
+    ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
 
     boolean isGameOver;
 
@@ -39,6 +42,15 @@ public class GamePanel extends JPanel implements Runnable {
         isGameOver = false;
         gThread = new Thread(this);
         gThread.start();
+        generateMovableEnemies();
+    }
+
+    private void generateMovableEnemies() {
+        createMovableEnemyAt(100, 200);
+    }
+
+    private void createMovableEnemyAt(int x, int y) {
+        movEnemyLst.add(new MovableEnemy(this, x, y));
     }
 
     public void run() {
@@ -46,7 +58,6 @@ public class GamePanel extends JPanel implements Runnable {
         Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
 
         while (gThread != null) {
-            System.out.println("YOOOOLOOOOOOOOOOOOOOO");
 
             update();
 
@@ -68,8 +79,12 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+
     public void update() {
         player.move();
+        for (int i = 0; i < movEnemyLst.size(); i++) {
+            movEnemyLst.get(i).move();
+        }
     }
 
 
@@ -77,10 +92,21 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
+        
         player.repaint(g);
+        for (int i = 0; i < movEnemyLst.size(); i++) {
+            movEnemyLst.get(i).repaint(g);
+        }
 
 
+      /*   System.out.println("painting enemy");
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.red);
+        g2D.fillRect(movEnemyLst.get(0).x, movEnemyLst.get(0).y, this.tileSize, this.tileSize);
+        g2D.dispose(); // Free resources related to g2D
+ */
+
+        g.dispose(); // Free resources related to g2D
 
     }
 

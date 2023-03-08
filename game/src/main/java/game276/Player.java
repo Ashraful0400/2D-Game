@@ -16,6 +16,8 @@ public class Player extends MovableCharacter {
     }
 
     public void move() {
+        prevX = x;
+        prevY = y;
         if (keyboardInput.upKeyPressed) {
             y -= speed;
         } else if (keyboardInput.leftKeyPressed) {
@@ -27,12 +29,12 @@ public class Player extends MovableCharacter {
         }
     }
 
-    // Just draws a rectangle for now, Replace with super class method that will draw a sprite
+    // TODO - Just draws a rectangle for now, Replace with super class method that will draw a sprite
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.white);
         g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
-        g2D.dispose(); // Free resources related to g2D
+        
     }
 
 }
