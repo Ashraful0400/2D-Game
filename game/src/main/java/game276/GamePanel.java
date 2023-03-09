@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
     int scrnWidth = maxScrnColNum * tileSize;
     int scrnHeight = maxScrnRowNum * tileSize;
 
+    int points;
+
     Thread gThread;
 
     int fps = 60;
@@ -27,6 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     Player player = new Player(this, 100, 100);
     ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
+
+    ArrayList<PointAdjuster> pointAdjuster = new ArrayList<PointAdjuster>();
 
     boolean isGameOver;
 
@@ -36,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true); // Improves game rendering performance
         this.addKeyListener(player.keyboardInput);
         this.setFocusable(true);
+        points = 0;
     }
 
     public void startThread() {
@@ -91,6 +96,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        for(int i = 0; i < pointAdjuster.size(); i++){
+            pointAdjuster.get(i).repaint();
+        }
 
         
         player.repaint(g);

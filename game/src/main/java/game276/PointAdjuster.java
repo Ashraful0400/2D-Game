@@ -25,8 +25,7 @@ public abstract class PointAdjuster extends StageGameObject{
     }
 
     public void reactCollision(MovableCharacter mc){
-        //TODO decide a place to store points
-        adjustPoints();
+        gp.points += adjustPoints();
     }
 
     public void repaint(Graphics g){
