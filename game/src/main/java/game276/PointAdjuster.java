@@ -1,8 +1,15 @@
 package game276;
 
-public class PointAdjuster extends StageGameObject{
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
+public abstract class PointAdjuster extends StageGameObject{
 
     protected int _amountToAdjust;
+
+    public BufferedImage image;
 
     public GamePanel gp;
 
@@ -22,8 +29,10 @@ public class PointAdjuster extends StageGameObject{
         adjustPoints();
     }
 
-    private void deletePointAdjuster(){
-        //TODO decide how to remove an obj
-        // gp.PointAdjuster[i] = null;
+    public void repaint(Graphics g){
+        Graphics2D g2D = (Graphics2D) g;
+
+        g2D.drawImage(image, x,y,gp.tileSize,gp.tileSize,null);
     }
+
 }
