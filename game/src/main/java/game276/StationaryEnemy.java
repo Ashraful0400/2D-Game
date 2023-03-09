@@ -23,6 +23,7 @@ public class StationaryEnemy extends PointAdjuster {
 
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,100));
         g2D.drawString(text,x,y);
 
     }
