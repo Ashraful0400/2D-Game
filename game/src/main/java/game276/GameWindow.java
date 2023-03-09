@@ -17,9 +17,9 @@ public class GameWindow {
         // Place window at middle of the screen
         gameWindow.setLocationRelativeTo(null);
         gameWindow.setVisible(true);
-
+        gp.setUpGame();
         gp.startThread();
-        
+
     }
-    
+
 }
