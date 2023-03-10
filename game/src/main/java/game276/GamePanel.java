@@ -8,6 +8,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import Object.SuperObject;
+import javafx.scene.effect.Light.Point;
+
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable {
 //screen settings
@@ -15,9 +18,9 @@ public class GamePanel extends JPanel implements Runnable {
     int ogTileSize = 16;//16x16 tile
 
     public int tileSize = ogTileSize * scale;// 48 x 48 tile
-   public int maxScrnColNum = 16;
-     public int maxScrnRowNum = 16;
-     int points;
+    public int maxScrnColNum = 16;
+    public int maxScrnRowNum = 16;
+    int points;
 
     int scrnWidth = maxScrnColNum * tileSize; // 768 pixels
     int scrnHeight = maxScrnRowNum * tileSize; //576 pixels
@@ -25,11 +28,19 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gThread;
 
     public AssetSetter aSetter = new AssetSetter(this);
+
+
+
     public Player player = new Player(this, 100, 100);
     //change the arraay to show as much of object it can fit on the map
     public SuperObject obj[] = new SuperObject[10];
+    public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
+    public ArrayList<PointAdjuster> pointAdjuster = new ArrayList<PointAdjuster>();
+
+
     int fps = 60;
     public CollisionHandler cChecker = new CollisionHandler(this);
+    public boolean isGameOver;
 
     TileManager tileM = new TileManager(this);
     public GamePanel() {
