@@ -28,10 +28,6 @@ public abstract class PointAdjuster extends StageGameObject{
         gp.points += adjustPoints();
     }
 
-    public void repaint(Graphics g){
-        Graphics2D g2D = (Graphics2D) g;
-
-        g2D.drawImage(image, x,y,gp.tileSize,gp.tileSize,null);
-    }
+    
 
 }
