@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public class Reward extends PointAdjuster{
 
-    protected int _amountToAdjust;
-
     public Reward(GamePanel gp, int _amountToAdjust, int x, int y){
         super(gp, _amountToAdjust, x, y);
         try{
@@ -17,7 +15,6 @@ public class Reward extends PointAdjuster{
         }catch (IOException e){
             e.printStackTrace();
         }
-        this._amountToAdjust = _amountToAdjust;
     }
 
 }

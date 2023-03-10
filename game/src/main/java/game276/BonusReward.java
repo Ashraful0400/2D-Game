@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.io.IOException;
 
 public class BonusReward extends Reward{
-    protected int _amountToAdjust;
 
     public BonusReward(GamePanel gp, int _amountToAdjust, int x, int y){
         super(gp, _amountToAdjust, x, y);
@@ -16,7 +15,6 @@ public class BonusReward extends Reward{
         }catch (IOException e){
             e.printStackTrace();
         }
-        this._amountToAdjust = _amountToAdjust;
     }
 
 }
