@@ -13,9 +13,9 @@ public abstract class PointAdjuster extends StageGameObject{
 
     public GamePanel gp;
 
-    public PointAdjuster(GamePanel gp, int _amountToAdjust, int x, int y){
+    public PointAdjuster(GamePanel gp, int x, int y){
         this.gp = gp;// for changing points
-        this._amountToAdjust = _amountToAdjust;
+        this._amountToAdjust = -1;// -1: amount not assign
         this.x = x;
         this.y = y;
     }
