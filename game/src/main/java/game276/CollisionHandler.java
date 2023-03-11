@@ -10,7 +10,7 @@ public class CollisionHandler {
         for (int i = 0; i < gp.allObjectLst.size(); i++) {
             StageGameObject curObj = gp.allObjectLst.get(i);
 
-            if (mc.hitBox.intersects(curObj.hitBox)) {
+            if (mc != curObj && mc.hitBox.intersects(curObj.hitBox)) {
                 System.out.println("COLLISION");
                 curObj.reactToCollision(mc);
             }

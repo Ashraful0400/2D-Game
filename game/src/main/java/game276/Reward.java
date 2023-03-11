@@ -8,14 +8,18 @@ import java.io.IOException;
 
 public class Reward extends PointAdjuster{
 
-    public Reward(GamePanel gp, int _amountToAdjust, int x, int y){
+    public Reward(GamePanel gp, int x, int y){
         super(gp, x, y);
+
+        
         this._amountToAdjust = 3;
-        try{
+        /* try{
             image = ImageIO.read(getClass().getResourceAsStream(null));//TODO image
         }catch (IOException e){
             e.printStackTrace();
-        }
+        } */
     }
+
+    
 
 }

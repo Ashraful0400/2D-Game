@@ -16,6 +16,11 @@ import javax.swing.JPanel;
 public class MovableEnemy extends MovableCharacter {
 
     Player player;
+    ArrayList<Double> distLst;
+    Double upDist;
+    Double leftDist;
+    Double downDist;
+    Double rightDist;
     
 
     MovableEnemy(GamePanel gp, int startingX, int startingY) {
@@ -37,12 +42,12 @@ public class MovableEnemy extends MovableCharacter {
         // Calculate 4 distances to the player
         // Move toward minimum direction
 
-        Double upDist = getDistanceFromPlayer(x, y-speed);
-        Double leftDist = getDistanceFromPlayer(x-speed, y);
-        Double downDist = getDistanceFromPlayer(x, y+speed);
-        Double rightDist = getDistanceFromPlayer(x+speed, y);
+        upDist = getDistanceFromPlayer(x, y-speed);
+        leftDist = getDistanceFromPlayer(x-speed, y);
+        downDist = getDistanceFromPlayer(x, y+speed);
+        rightDist = getDistanceFromPlayer(x+speed, y);
 
-        ArrayList<Double> distLst = new ArrayList<Double>();
+        distLst = new ArrayList<Double>();
         distLst.add(upDist);
         distLst.add(leftDist);
         distLst.add(downDist);
@@ -75,7 +80,22 @@ public class MovableEnemy extends MovableCharacter {
 
     public void moveBack() {
         super.moveBack();
+        moveAgain();
         // TODO - need to find a way to move MovableEnemy again to another direction
+    }
+
+    // TODO - Gets stuck still even if not a corner
+    public void moveAgain() { // Assumes distLst && all direction fields is set
+        Double secondMinDist = distLst.get(1);
+        if (secondMinDist == upDist) {
+            y -= speed;
+        } else if (secondMinDist == leftDist) {
+            x -= speed;
+        } else if (secondMinDist == downDist) {
+            y += speed;
+        } else if (secondMinDist == rightDist) {
+            x += speed;
+        } 
     }
 
 

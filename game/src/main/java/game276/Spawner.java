@@ -11,7 +11,8 @@ public class Spawner {
     // Generate all entities EXCEPT player
     public void generateAllEntitiesExceptPlayer() {
         //generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
-        //generateMovableEnemies();
+        generateMovableEnemies();
+        generateRewards();
         generateBarriers();
     }
 
@@ -22,16 +23,23 @@ public class Spawner {
     public void generateBarriers() {
         createBarrierAt(150, 150);
     }
-
     public void createBarrierAt(int x, int y) {
         Barrier newM = new Barrier(gp, x, y);
         gp.allObjectLst.add(newM);
+        gp.barriersLst.add(newM);
     }
+
+    public void generateRewards() {
+        createRewardAt(400, 400);
+    } 
+    public void createRewardAt(int x, int y) {
+        gp.allObjectLst.add(new Reward(gp, x, y));
+    }  
+
 
     public void generateMovableEnemies() {
-        createMovableEnemyAt(100, 200);
+        createMovableEnemyAt(100, 400);
     }
-
     public void createMovableEnemyAt(int x, int y) {
         MovableEnemy newM = new MovableEnemy(gp, x, y);
         gp.allObjectLst.add(newM);

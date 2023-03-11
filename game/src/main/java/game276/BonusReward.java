@@ -8,14 +8,14 @@ import java.io.IOException;
 
 public class BonusReward extends Reward{
 
-    public BonusReward(GamePanel gp, int _amountToAdjust, int x, int y){
-        super(gp, _amountToAdjust, x, y);
+    public BonusReward(GamePanel gp, int x, int y){
+        super(gp, x, y);
         this._amountToAdjust = 5;
-        try{
+        /* try{
             image = ImageIO.read(getClass().getResourceAsStream(null));//TODO image
         }catch (IOException e){
             e.printStackTrace();
-        }
+        } */
     }
 
 }

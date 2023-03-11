@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements Runnable {
 
     // TODO - check negative points
-//screen settings
+    //screen settings
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
 
@@ -34,6 +34,9 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<StageGameObject> allObjectLst = new ArrayList<StageGameObject>();
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
     public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
+    public ArrayList<Barrier> barriersLst = new ArrayList<Barrier>();
+
+
 
 
 
@@ -96,6 +99,10 @@ public class GamePanel extends JPanel implements Runnable {
             movEnemyLst.get(i).move();
         }
         cHandler.processObjectCollision(player);
+        
+        for (int i = 0; i < movEnemyLst.size(); i++) {
+            cHandler.processObjectCollision(movEnemyLst.get(i));
+        }
     }
 
     public void announceGameOver(Graphics g){

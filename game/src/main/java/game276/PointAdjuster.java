@@ -19,7 +19,7 @@ public abstract class PointAdjuster extends StageGameObject{
         this.x = x;
         this.y = y;
        
-        hitboxLength = 10;
+        hitboxLength = gp.tileSize;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
 
         this._amountToAdjust = -1;// -1: amount not assign
@@ -30,8 +30,19 @@ public abstract class PointAdjuster extends StageGameObject{
         return _amountToAdjust;
     }
 
-    public void reactCollision(MovableCharacter mc){
-        gp.points += adjustPoints();
+    public void reactToCollision(MovableCharacter mc) {
+        if (mc == gp.player) {
+            gp.points += adjustPoints();
+            gp.allObjectLst.remove(this);
+        }
+    }
+
+
+
+    public void repaint(Graphics g) {
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.green);
+        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
     }
 
     
