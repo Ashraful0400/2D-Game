@@ -18,8 +18,12 @@ public abstract class StageGameObject {
     public BufferedImage sprite;
 
     public boolean collision = false;
+    public Rectangle hitBox;
+    public int hitboxLength;
 
-    public int hitboxLength = 10;
+
+
+
 
     public void getImage() {        // TODO -implement drawing
 
@@ -32,9 +36,6 @@ public abstract class StageGameObject {
         } */
         return;
     }
-
-    // hitbox
-    public Rectangle hitBox = new Rectangle(0,0, hitboxLength, hitboxLength);
 
     public void repaint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;

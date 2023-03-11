@@ -12,12 +12,17 @@ public class Player extends MovableCharacter {
     public Player(GamePanel gp, int startingX, int startingY) {
         super(gp, startingX, startingY);
 
+
         imagePath = "mouse/mouse1.png.png";
         getImage();
         this.speed = 5;
     }
 
     public void move() {
+
+        prevX = x;
+        prevY = y;
+        
         if (keyboardInput.upKeyPressed) {
             direction = "up";
             y -= speed;

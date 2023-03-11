@@ -11,11 +11,21 @@ public class Spawner {
     // Generate all entities EXCEPT player
     public void generateAllEntitiesExceptPlayer() {
         //generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
-        generateMovableEnemies();
+        //generateMovableEnemies();
+        generateBarriers();
     }
 
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell());
+        gp.allObjectLst.add(new ExitCell(gp, 1000, 1000));
+    }
+
+    public void generateBarriers() {
+        createBarrierAt(150, 150);
+    }
+
+    public void createBarrierAt(int x, int y) {
+        Barrier newM = new Barrier(gp, x, y);
+        gp.allObjectLst.add(newM);
     }
 
     public void generateMovableEnemies() {

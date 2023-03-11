@@ -19,15 +19,15 @@ public abstract class MovableCharacter extends StageGameObject {
     //check object collision
    //int objIndex = gp.cChecker.checkObject(this, true);
 
-    public MovableCharacter(GamePanel gp) {
-        super();
-        this.gp = gp;
-    }
 
     public MovableCharacter(GamePanel gp, int startingX, int startingY) {
         this.gp = gp;
         this.x = startingX;
         this.y = startingY;
+       
+        hitboxLength = gp.tileSize;
+        hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
+
     }
 
     public void resetHitboxPos() {
@@ -41,5 +41,9 @@ public abstract class MovableCharacter extends StageGameObject {
     public void moveBack() {
         x = prevX;
         y = prevY;
+    }
+
+    public void resetHitboxPos(MovableCharacter mc) {
+        gp.isGameOver = true;
     }
 }

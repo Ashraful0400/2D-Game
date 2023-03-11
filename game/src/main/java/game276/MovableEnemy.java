@@ -30,7 +30,6 @@ public class MovableEnemy extends MovableCharacter {
 
     public void move() {
 
-        System.out.println("Moving enemy");
 
         prevX = x;
         prevY = y;
