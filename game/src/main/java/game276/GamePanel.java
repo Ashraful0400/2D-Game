@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-import Object.SuperObject;
 import barrier.*;
 
 import java.util.ArrayList;
@@ -25,21 +24,24 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gThread;
 
-    public AssetSetter aSetter = new AssetSetter(this);
-
-
 
     public Player player = new Player(this, 100, 100);
     //change the arraay to show as much of object it can fit on the map
     public SuperObject obj[] = new SuperObject[10];
+
+    public Spawner spawner = new Spawner(this);
+
+    public ArrayList<StageGameObject> allObjectLst = new ArrayList<StageGameObject>();
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
-    public ArrayList<PointAdjuster> pointAdjuster = new ArrayList<PointAdjuster>();
+    public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
+
+
 
 
     int fps = 60;
     public CollisionHandler cChecker = new CollisionHandler(this);
     public boolean isGameOver;
-//Calling Barrier Manager
+    //Calling Barrier Manager
     BarrierManager tileM = new BarrierManager(this);
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
@@ -51,22 +53,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
     public void setUpGame(){
-        aSetter.setObject();
+        spawner.generateAllEntitiesExceptPlayer(); // gp's allObjectLst[0] == always exitDoor
     }
 
     public void startThread() {
         isGameOver = false;
         gThread = new Thread(this);
         gThread.start();
-        generateMovableEnemies();
     }
-    private void generateMovableEnemies() {
-        createMovableEnemyAt(100, 200);
-    }
-    private void createMovableEnemyAt(int x, int y) {
-        movEnemyLst.add(new MovableEnemy(this, x, y));
-    }
-
 
 
 
@@ -74,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
         Double drawInterval = 1000000000.0 / fps;
         Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
 
-        while (gThread != null) {
+        while (gThread != null && !isGameOver) {
             System.out.println("YOOOOLOOOOOOOOOOOOOOO");
 
             update();
@@ -108,35 +102,37 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-//draws tiles
-        //might be a prob
-    tileM.draw((Graphics2D) g);
-        for(int i = 0; i < pointAdjuster.size(); i++){
-            pointAdjuster.get(i).repaint();
+        /* super.paintComponent(g);
+        //draws tiles
+        //TODO - might be a prob
+        // tileM.draw((Graphics2D) g);
+        for(int i = 0; i < pointAdjusterLst.size(); i++){
+            pointAdjusterLst.get(i).repaint(g);
         }
 
-    //draws object
-        for(int i = 0; i < obj.length; i++)
-        {
+        //draws object
+        for(int i = 0; i < obj.length; i++) {
             if(obj[i] != null ){
                 obj[i].draw((Graphics2D)g ,this);
             }
         }
-    //draws player
+        //draws player
         player.repaint(g);
         for (int i = 0; i < movEnemyLst.size(); i++) {
             movEnemyLst.get(i).repaint(g);
         }
-         /*   System.out.println("painting enemy");
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.red);
-        g2D.fillRect(movEnemyLst.get(0).x, movEnemyLst.get(0).y, this.tileSize, this.tileSize);
-        g2D.dispose(); // Free resources related to g2D
+      
+
+        g.dispose();// Free resources related to g2D
  */
 
-    g.dispose();// Free resources related to g2D
-
+        super.paintComponent(g);
+        player.repaint(g);
+        for (int i = 0; i < allObjectLst.size(); i++) {
+            allObjectLst.get(i).repaint(g);
+        }
+        
+        g.dispose();// Free resources related to g2D
     }
 
 }

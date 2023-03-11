@@ -9,10 +9,9 @@ import game276.SuperObject;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class ExitCell extends SuperObject {
+public class ExitCell extends StageGameObject {
     public ExitCell() {
 
-        name = "Exit Door";
         try {
             //possible error
             image = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
