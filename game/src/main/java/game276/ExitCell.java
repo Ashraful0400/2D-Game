@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ExitCell extends SuperObject {
     public ExitCell() {
-        //possible error
+
         name = "Exit Door";
         try {
             //possible error
@@ -19,6 +19,7 @@ public class ExitCell extends SuperObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         collision = true;
     }
 

@@ -22,6 +22,7 @@ public class BarrierManager {
 
     }
     public void getBarrierImage(){
+
         try{
             tile[0] = new Barrier();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));

@@ -11,7 +11,7 @@ public class CollisionHandler {
     int movableCharacterTopWorldY = movableCharacter.prevY+ movableCharacter.solidArea.y;
     int movableCharacterBottomWorldY = movableCharacter.prevY + movableCharacter.solidArea.y + movableCharacter.solidArea.height;
 
-        int movableCharacterBottomRow = movableCharacterBottomWorldY/gp.tileSize;
+    int movableCharacterBottomRow = movableCharacterBottomWorldY/gp.tileSize;
     int movableCharacterLeftColumn =movableCharacterLeftWorldX / gp.tileSize;
     int movableCharacterRightColumn = movableCharacterRightWorldX / gp.tileSize;
     int movableCharacterTopRow = movableCharacterTopWorldY/gp.tileSize;
@@ -28,6 +28,7 @@ public class CollisionHandler {
                 return true;
             }
             break;
+
             case "down":
                 movableCharacterBottomRow = (movableCharacterBottomWorldY + movableCharacter.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[movableCharacterLeftColumn][movableCharacterBottomRow];
@@ -37,6 +38,7 @@ public class CollisionHandler {
                     return true;
                 }
                 break;
+
             case "left":
                 movableCharacterLeftColumn = (movableCharacterLeftWorldX - movableCharacter.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[movableCharacterLeftColumn][movableCharacterTopRow];
@@ -46,6 +48,7 @@ public class CollisionHandler {
                     return true;
                 }
                 break;
+
             case "right":
                 movableCharacterRightColumn = (movableCharacterRightWorldX +  movableCharacter.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[movableCharacterRightColumn][movableCharacterTopRow];
@@ -62,6 +65,7 @@ public class CollisionHandler {
     //
 public int checkObject(MovableCharacter move,boolean player) {
     int index = 999;
+
     for (int i = 0; i < gp.obj.length; i++) {
         if (gp.obj[i] != null) {
             //get character's solid area position
@@ -83,6 +87,7 @@ public int checkObject(MovableCharacter move,boolean player) {
                        }
                     }
                     break;
+
                 case "down":
                     move.solidArea.y += move.speed;
                     if (move.solidArea.intersects(gp.obj[i].solidArea)) {
@@ -94,6 +99,7 @@ public int checkObject(MovableCharacter move,boolean player) {
                         }
                     }
                     break;
+
                 case "left":
                     move.solidArea.x -= move.speed;
                     if (move.solidArea.intersects(gp.obj[i].solidArea)) {
@@ -105,6 +111,7 @@ public int checkObject(MovableCharacter move,boolean player) {
                         }
                     }
                     break;
+
                 case "right":
                     move.solidArea.x += move.speed;
                     if (move.solidArea.intersects(gp.obj[i].solidArea)) {
@@ -119,6 +126,7 @@ public int checkObject(MovableCharacter move,boolean player) {
 
             }
         }
+
         move.solidArea.x = move.solidAreaDefaultX;
         move.solidArea.y = move.solidAreaDefaultY;
         gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
