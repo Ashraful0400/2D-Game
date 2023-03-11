@@ -59,7 +59,7 @@ public class CollisionHandler {
         }
         return false;
     }
-    //No need to worry about now I am fixing this method
+    //
 public int checkObject(MovableCharacter move,boolean player) {
     int index = 999;
     for (int i = 0; i < gp.obj.length; i++) {

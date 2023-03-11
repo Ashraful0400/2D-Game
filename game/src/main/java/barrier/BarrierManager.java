@@ -14,11 +14,12 @@ public class BarrierManager {
     public int mapTileNum[][];
     public BarrierManager(GamePanel gp){
         this.gp = gp;
-        tile = new Barrier[10];
+        //how many types of barrier you wanna make
+        tile = new Barrier[3];
         //makes the Barrier
         mapTileNum = new int[gp.maxScrnColNum][gp.maxScrnRowNum];
         getBarrierImage();
-        loadMap("/maps/map01.txt" );
+
     }
     public void getBarrierImage(){
         try{
@@ -39,5 +40,6 @@ public class BarrierManager {
             e.printStackTrace();
         }
     }
+
 
 }

@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-import Object.SuperObject;
 
 public class GamePanel extends JPanel implements Runnable {
 //screen settings

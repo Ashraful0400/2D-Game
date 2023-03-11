@@ -15,8 +15,9 @@ public abstract class StageGameObject {
     public int y; //y increase -> move downward
     public BufferedImage image;
     public GamePanel gp;
+
     // void reactToCollision()
-    public int hitboxLength;
+    public int hitboxLength = 0;
     /* public void repaint(Graphics g) {
         // Draw the image
         Graphics2D g2D = (Graphics2D) g;

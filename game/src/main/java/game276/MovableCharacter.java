@@ -24,7 +24,12 @@ public boolean CollisionOn = false;
     public MovableCharacter(GamePanel gp) {
         super();
     }
-public void pickUpObject(int i){
+
+    public MovableCharacter(GamePanel gp, int startingX, int startingY) {
+        super();
+    }
+
+    public void pickUpObject(int i){
         if(i != 999){
 
             String objectName = gp.obj[i].name;
