@@ -63,6 +63,7 @@ public class MovableEnemy extends MovableCharacter {
         } 
 
         System.out.println(" " + x + " " + y);
+        resetHitboxPos();
 
     }
 
@@ -86,7 +87,7 @@ public class MovableEnemy extends MovableCharacter {
         g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
     }
 
-    public void reactToCollision() {
+    public void reactToCollision(MovableCharacter mc) {
         gp.isGameOver = true;
     }
     

@@ -33,6 +33,7 @@ public class Player extends MovableCharacter {
         }
         CollisionOn = false;
         //gp.cChecker.processObjectCollision(this);
+        resetHitboxPos();
     }
 
     // Just draws a rectangle for now

@@ -11,6 +11,8 @@ import barrier.*;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable {
+
+    // TODO - check negative points
 //screen settings
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
@@ -68,7 +70,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         while (gThread != null && !isGameOver) {
             System.out.println("YOOOOLOOOOOOOOOOOOOOO");
-
             update();
 
             // Wait for redrawing (for 60 FPS)
@@ -85,7 +86,6 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             repaint();
-
         }
     }
 

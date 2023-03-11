@@ -30,6 +30,11 @@ public abstract class MovableCharacter extends StageGameObject {
         this.y = startingY;
     }
 
+    public void resetHitboxPos() {
+        hitBox.x = x;
+        hitBox.y = y;
+    }
+
 
     public void move() {};
 
