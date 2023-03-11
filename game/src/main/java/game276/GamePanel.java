@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int tileSize = ogTileSize * scale;// 48 x 48 tile
     public int maxScrnColNum = 16;
     public int maxScrnRowNum = 16;
-    int points;
+    public int points;
 
     int scrnWidth = maxScrnColNum * tileSize; // 768 pixels
     int scrnHeight = maxScrnRowNum * tileSize; //576 pixels
@@ -26,9 +26,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     public Player player = new Player(this, 100, 100);
-    //change the arraay to show as much of object it can fit on the map
-    public SuperObject obj[] = new SuperObject[10];
-
     public Spawner spawner = new Spawner(this);
 
     public ArrayList<StageGameObject> allObjectLst = new ArrayList<StageGameObject>();
@@ -42,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionHandler cChecker = new CollisionHandler(this);
     public boolean isGameOver;
     //Calling Barrier Manager
-    BarrierManager tileM = new BarrierManager(this);
+    // BarrierManager tileM = new BarrierManager(this);
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);

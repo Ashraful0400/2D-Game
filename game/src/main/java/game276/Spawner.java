@@ -10,7 +10,7 @@ public class Spawner {
 
     // Generate all entities EXCEPT player
     public void generateAllEntitiesExceptPlayer() {
-        generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
+        //generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
         generateMovableEnemies();
     }
 

@@ -16,10 +16,10 @@ public class Player extends MovableCharacter {
         this.y = startingY;
         this.speed = 5;
         //chnage as needed in video 8 at 2 min
-        solidAreaDefaultX = solidArea.x;
-        solidAreaDefaultY = solidArea.y;
+
         //video 6 (7) min change accordingly
-        solidArea = new Rectangle(0,0,gp.tileSize,gp.tileSize);
+
+        //hitBox = new Rectangle(0,0,gp.tileSize,gp.tileSize);
     }
 
     public void move() {

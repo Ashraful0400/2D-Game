@@ -16,19 +16,20 @@ public abstract class StageGameObject {
     public BufferedImage image;
     public GamePanel gp;
 
-    public boolean collision;
+    public boolean collision = false;
 
-    // void reactToCollision()
     public int hitboxLength = 0;
 
     // hitbox
-    public Rectangle hitBox = new Rectangle(0,0,48,48);
+    public Rectangle hitBox = new Rectangle(0,0, hitboxLength, hitboxLength);
 
 
     public void repaint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(image, x,y,gp.tileSize,gp.tileSize,null);
     }
+
+    public void reactToCollision(MovableCharacter mc) {};
 
     /* public static BufferedImage image;
     public static String name;

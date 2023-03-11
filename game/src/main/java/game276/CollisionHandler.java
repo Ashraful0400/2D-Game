@@ -5,11 +5,25 @@ public class CollisionHandler {
     public CollisionHandler(GamePanel gp){
       this.gp = gp;
     }
+
+    public void processObjectCollision (MovableCharacter mc) {
+        for (int i = 0; i < gp.allObjectLst.size(); i++) {
+            StageGameObject curObj = gp.allObjectLst.get(i);
+
+            if (mc.hitBox.intersects(curObj.hitBox)) {
+                curObj.reactToCollision(mc);
+            }
+
+        }
+    }
+
+
+/* 
     public boolean processObjectCollision (MovableCharacter movableCharacter){
-    int movableCharacterLeftWorldX = movableCharacter.prevX + movableCharacter.solidArea.x;
-    int movableCharacterRightWorldX = movableCharacter.prevX + movableCharacter.solidArea.x + movableCharacter.solidArea.width;
-    int movableCharacterTopWorldY = movableCharacter.prevY+ movableCharacter.solidArea.y;
-    int movableCharacterBottomWorldY = movableCharacter.prevY + movableCharacter.solidArea.y + movableCharacter.solidArea.height;
+    int movableCharacterLeftWorldX = movableCharacter.prevX + movableCharacter.hitBox.x;
+    int movableCharacterRightWorldX = movableCharacter.prevX + movableCharacter.hitBox.x + movableCharacter.hitBox.width;
+    int movableCharacterTopWorldY = movableCharacter.prevY+ movableCharacter.hitBox.y;
+    int movableCharacterBottomWorldY = movableCharacter.prevY + movableCharacter.hitBox.y + movableCharacter.hitBox.height;
 
     int movableCharacterBottomRow = movableCharacterBottomWorldY/gp.tileSize;
     int movableCharacterLeftColumn =movableCharacterLeftWorldX / gp.tileSize;
@@ -61,78 +75,79 @@ public class CollisionHandler {
 
         }
         return false;
-    }
+    } */
     //
-public int checkObject(MovableCharacter move,boolean player) {
-    int index = 999;
+    /* 
+    public int checkObject(MovableCharacter move,boolean player) {
+        int index = 999;
 
-    for (int i = 0; i < gp.obj.length; i++) {
-        if (gp.obj[i] != null) {
-            //get character's solid area position
-            move.solidArea.x = move.prevX + move.solidArea.x;
-            move.solidArea.y = move.prevY + move.solidArea.y;
-            //get the object 's solid area position
-            gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
-            gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] != null) {
+                //get character's solid area position
+                move.hitBox.x = move.prevX + move.hitBox.x;
+                move.hitBox.y = move.prevY + move.hitBox.y;
+                //get the object 's solid area position
+                gp.obj[i].hitBox.x = gp.obj[i].worldX + gp.obj[i].hitBox.x;
+                gp.obj[i].hitBox.y = gp.obj[i].worldY + gp.obj[i].hitBox.y;
 
-            switch (move.direction) {
-                case "up":
-                    move.solidArea.y -= move.speed;
-                    if (move.solidArea.intersects(gp.obj[i].solidArea)) {
-                       if(gp.obj[i].collision == true){
-                           move.CollisionOn = true;
-                       }
-                       if(player == true){
-                           index = i  ;
-                       }
-                    }
-                    break;
-
-                case "down":
-                    move.solidArea.y += move.speed;
-                    if (move.solidArea.intersects(gp.obj[i].solidArea)) {
+                switch (move.direction) {
+                    case "up":
+                        move.hitBox.y -= move.speed;
+                        if (move.hitBox.intersects(gp.obj[i].hitBox)) {
                         if(gp.obj[i].collision == true){
                             move.CollisionOn = true;
                         }
                         if(player == true){
                             index = i  ;
                         }
-                    }
-                    break;
+                        }
+                        break;
 
-                case "left":
-                    move.solidArea.x -= move.speed;
-                    if (move.solidArea.intersects(gp.obj[i].solidArea)) {
-                        if(gp.obj[i].collision == true){
-                            move.CollisionOn = true;
+                    case "down":
+                        move.hitBox.y += move.speed;
+                        if (move.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if(gp.obj[i].collision == true){
+                                move.CollisionOn = true;
+                            }
+                            if(player == true){
+                                index = i  ;
+                            }
                         }
-                        if(player == true){
-                            index = i  ;
-                        }
-                    }
-                    break;
+                        break;
 
-                case "right":
-                    move.solidArea.x += move.speed;
-                    if (move.solidArea.intersects(gp.obj[i].solidArea)) {
-                        if(gp.obj[i].collision == true){
-                            move.CollisionOn = true;
+                    case "left":
+                        move.hitBox.x -= move.speed;
+                        if (move.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if(gp.obj[i].collision == true){
+                                move.CollisionOn = true;
+                            }
+                            if(player == true){
+                                index = i  ;
+                            }
                         }
-                        if(player == true){
-                            index = i  ;
-                        }
-                    }
-                    break;
+                        break;
 
+                    case "right":
+                        move.hitBox.x += move.speed;
+                        if (move.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if(gp.obj[i].collision == true){
+                                move.CollisionOn = true;
+                            }
+                            if(player == true){
+                                index = i  ;
+                            }
+                        }
+                        break;
+
+                }
             }
+
+            move.hitBox.x = move.solidAreaDefaultX;
+            move.hitBox.y = move.solidAreaDefaultY;
+            gp.obj[i].hitBox.x = gp.obj[i].solidAreaDefaultX;
+            gp.obj[i].hitBox.y = gp.obj[i].solidAreaDefaultY;
+
         }
-
-        move.solidArea.x = move.solidAreaDefaultX;
-        move.solidArea.y = move.solidAreaDefaultY;
-        gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
-        gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
-
-    }
-    return index;
-}
+        return index;
+    } */
 }

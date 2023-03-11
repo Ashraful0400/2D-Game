@@ -74,13 +74,13 @@ public class MovableEnemy extends MovableCharacter {
         // TODO - need to find a way to move MovableEnemy again to another direction
     }
 
-    // TODO - Just draws a rectangle for now, Replace with super class method that will draw a sprite
+/*     // TODO - Just draws a rectangle for now, Replace with super class method that will draw a sprite
     public void repaint(Graphics g) {
         System.out.println("painting enemy");
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.red);
         g2D.fillRect(this.x, this.y, gp.tileSize, gp.tileSize);
         
-    }
+    } */
     
 }
