@@ -1,14 +1,12 @@
 package game276;
 
-import tile.TileManager;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import Object.SuperObject;
-import javafx.scene.effect.Light.Point;
+import barrier.*;
 
 import java.util.ArrayList;
 
@@ -41,8 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
     int fps = 60;
     public CollisionHandler cChecker = new CollisionHandler(this);
     public boolean isGameOver;
-
-    TileManager tileM = new TileManager(this);
+//Calling Barrier Manager
+    BarrierManager tileM = new BarrierManager(this);
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);

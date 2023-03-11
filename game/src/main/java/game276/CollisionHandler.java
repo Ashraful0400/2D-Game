@@ -5,7 +5,7 @@ public class CollisionHandler {
     public CollisionHandler(GamePanel gp){
       this.gp = gp;
     }
-    public void checkTile (MovableCharacter movableCharacter){
+    public boolean processObjectCollision (MovableCharacter movableCharacter){
     int movableCharacterLeftWorldX = movableCharacter.prevX + movableCharacter.solidArea.x;
     int movableCharacterRightWorldX = movableCharacter.prevX + movableCharacter.solidArea.x + movableCharacter.solidArea.width;
     int movableCharacterTopWorldY = movableCharacter.prevY+ movableCharacter.solidArea.y;
@@ -16,15 +16,16 @@ public class CollisionHandler {
     int movableCharacterRightColumn = movableCharacterRightWorldX / gp.tileSize;
     int movableCharacterTopRow = movableCharacterTopWorldY/gp.tileSize;
 
-
         int tileNum1, tileNum2;
+
         switch (movableCharacter.direction){
             case "up":
         movableCharacterTopRow = (movableCharacterTopWorldY - movableCharacter.speed)/gp.tileSize;
-        tileNum1 = gp.tileM.mapTileNum[movableCharacterLeftColumn][movableCharacterTopRow];
+            tileNum1 = gp.tileM.mapTileNum[movableCharacterLeftColumn][movableCharacterTopRow];
             tileNum2 = gp.tileM.mapTileNum[movableCharacterRightColumn][movableCharacterTopRow];
             if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
                 movableCharacter.CollisionOn = true;
+                return true;
             }
             break;
             case "down":
@@ -33,6 +34,7 @@ public class CollisionHandler {
                 tileNum2 = gp.tileM.mapTileNum[movableCharacterRightColumn][movableCharacterBottomRow];
                 if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
                     movableCharacter.CollisionOn = true;
+                    return true;
                 }
                 break;
             case "left":
@@ -41,6 +43,7 @@ public class CollisionHandler {
                 tileNum2 = gp.tileM.mapTileNum[movableCharacterRightColumn][movableCharacterBottomRow];
                 if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
                     movableCharacter.CollisionOn = true;
+                    return true;
                 }
                 break;
             case "right":
@@ -49,11 +52,14 @@ public class CollisionHandler {
                 tileNum2 = gp.tileM.mapTileNum[movableCharacterRightColumn][movableCharacterTopRow];
                 if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
                     movableCharacter.CollisionOn = true;
+                    return true;
                 }
                 break;
 
         }
+        return false;
     }
+    //No need to worry about now I am fixing this method
 public int checkObject(MovableCharacter move,boolean player) {
     int index = 999;
     for (int i = 0; i < gp.obj.length; i++) {

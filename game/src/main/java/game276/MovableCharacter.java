@@ -6,6 +6,7 @@ public abstract class MovableCharacter extends StageGameObject {
     public int speed; // How much character moves each frame
     GamePanel gp;
     public String name;
+    public String direction;
     // Needed for moveBack()
     public int prevX;
     public int prevY;
@@ -16,7 +17,6 @@ public Rectangle solidArea;
     //pickUpObject(objIndex);
 public int solidAreaDefaultX, solidAreaDefaultY;
 //check tile collision
-
 public boolean CollisionOn = false;
 //check object collision
    int objIndex = gp.cChecker.checkObject(this, true);

@@ -7,6 +7,7 @@ public class Player extends MovableCharacter {
     public GamePanel gp;
     public InputHandler keyboardInput = new InputHandler();
 
+
     public Player(GamePanel gp, int startingX, int startingY) {
         super(gp);
         this.gp = gp;
@@ -23,14 +24,21 @@ public class Player extends MovableCharacter {
 
     public void move() {
         if (keyboardInput.upKeyPressed) {
+            direction = "up";
             y -= speed;
         } else if (keyboardInput.leftKeyPressed) {
+            direction = "left";
             x -= speed;
         } else if (keyboardInput.downKeyPressed) {
+            direction = "down";
             y += speed;
         } else if (keyboardInput.rightKeyPressed) {
+            direction = "right";
             x += speed;
         }
+        CollisionOn = false;
+        gp.cChecker.processObjectCollision(this);
+
     }
 
     // Just draws a rectangle for now
