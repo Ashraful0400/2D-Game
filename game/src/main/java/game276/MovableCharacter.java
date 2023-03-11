@@ -4,7 +4,7 @@ import java.awt.*;
 
 public abstract class MovableCharacter extends StageGameObject {
     public int speed; // How much character moves each frame
-    GamePanel gp;
+    public GamePanel gp;
     public String name;
     public String direction;
     // Needed for moveBack()
@@ -20,6 +20,7 @@ public abstract class MovableCharacter extends StageGameObject {
    //int objIndex = gp.cChecker.checkObject(this, true);
 
     public MovableCharacter(GamePanel gp) {
+        super();
         this.gp = gp;
     }
 

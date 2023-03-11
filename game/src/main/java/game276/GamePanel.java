@@ -1,5 +1,6 @@
 package game276;
 
+import java.awt.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     int fps = 60;
-    public CollisionHandler cChecker = new CollisionHandler(this);
+    public CollisionHandler cHandler = new CollisionHandler(this);
     public boolean isGameOver;
     //Calling Barrier Manager
     // BarrierManager tileM = new BarrierManager(this);
@@ -94,6 +95,19 @@ public class GamePanel extends JPanel implements Runnable {
         for (int i = 0; i < movEnemyLst.size(); i++) {
             movEnemyLst.get(i).move();
         }
+        cHandler.processObjectCollision(player);
+    }
+
+    public void announceGameOver(Graphics g){
+        String text = "Game over";
+        int x = this.scrnWidth/2;
+        int y = this.scrnHeight/2;
+
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,100));
+        g2D.drawString(text,x,y);
+
     }
 
 
@@ -127,6 +141,10 @@ public class GamePanel extends JPanel implements Runnable {
         player.repaint(g);
         for (int i = 0; i < allObjectLst.size(); i++) {
             allObjectLst.get(i).repaint(g);
+        }
+
+        if (isGameOver) {
+            announceGameOver(g);
         }
         
         g.dispose();// Free resources related to g2D

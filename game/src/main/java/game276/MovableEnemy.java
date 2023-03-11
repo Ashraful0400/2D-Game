@@ -16,12 +16,16 @@ import javax.swing.JPanel;
 public class MovableEnemy extends MovableCharacter {
 
     Player player;
+    
 
     MovableEnemy(GamePanel gp, int startingX, int startingY) {
         super(gp, startingX, startingY);
         this.speed = 2;
-
         player = gp.player;
+
+        imagePath = "cat/New Piskel-1.png (1).png";
+        getImage();
+
     }
 
     public void move() {
@@ -74,13 +78,16 @@ public class MovableEnemy extends MovableCharacter {
         // TODO - need to find a way to move MovableEnemy again to another direction
     }
 
-/*     // TODO - Just draws a rectangle for now, Replace with super class method that will draw a sprite
+
+    // Just draws a rectangle for now
     public void repaint(Graphics g) {
-        System.out.println("painting enemy");
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.red);
-        g2D.fillRect(this.x, this.y, gp.tileSize, gp.tileSize);
-        
-    } */
+        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+    }
+
+    public void reactToCollision() {
+        gp.isGameOver = true;
+    }
     
 }

@@ -1,25 +1,20 @@
 package game276;
 
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import java.io.File;
 
 public class Player extends MovableCharacter {
-    public GamePanel gp;
     public InputHandler keyboardInput = new InputHandler();
 
-
     public Player(GamePanel gp, int startingX, int startingY) {
-        super(gp);
-        this.gp = gp;
-        // Default position
-        this.x = startingX;
-        this.y = startingY;
+        super(gp, startingX, startingY);
+
+        imagePath = "mouse/mouse1.png.png";
+        getImage();
         this.speed = 5;
-        //chnage as needed in video 8 at 2 min
-
-        //video 6 (7) min change accordingly
-
-        //hitBox = new Rectangle(0,0,gp.tileSize,gp.tileSize);
     }
 
     public void move() {
@@ -37,8 +32,7 @@ public class Player extends MovableCharacter {
             x += speed;
         }
         CollisionOn = false;
-        gp.cChecker.processObjectCollision(this);
-
+        //gp.cChecker.processObjectCollision(this);
     }
 
     // Just draws a rectangle for now
@@ -46,7 +40,6 @@ public class Player extends MovableCharacter {
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.white);
         g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
-        g2D.dispose(); // Free resources related to g2D
     }
 
 }

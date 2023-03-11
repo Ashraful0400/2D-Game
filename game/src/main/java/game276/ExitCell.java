@@ -14,7 +14,7 @@ public class ExitCell extends StageGameObject {
 
         try {
             //possible error
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

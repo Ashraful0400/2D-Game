@@ -13,21 +13,38 @@ import java.awt.*;
 public abstract class StageGameObject {
     public int x;
     public int y; //y increase -> move downward
-    public BufferedImage image;
+    public String imagePath;
     public GamePanel gp;
+    public BufferedImage sprite;
 
     public boolean collision = false;
 
-    public int hitboxLength = 0;
+    public int hitboxLength = 10;
+
+    public void getImage() {        // TODO -implement drawing
+
+        /* try {
+            //sprite = ImageIO.read(getClass().getResource("Images/" + imagePath));
+            sprite = ImageIO.read(new File("Images/mouse/mouse-1.png.png"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } */
+        return;
+    }
 
     // hitbox
     public Rectangle hitBox = new Rectangle(0,0, hitboxLength, hitboxLength);
 
-
     public void repaint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
-        g2D.drawImage(image, x,y,gp.tileSize,gp.tileSize,null);
+        
+        // TODO -implement drawing
+        // g2D.drawImage(sprite, x,y,gp.tileSize,gp.tileSize,null);
+        g2D.setColor(Color.white);
+        g2D.fillRect(x, y, hitboxLength, hitboxLength);
     }
+
 
     public void reactToCollision(MovableCharacter mc) {};
 

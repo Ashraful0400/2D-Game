@@ -11,6 +11,7 @@ public class CollisionHandler {
             StageGameObject curObj = gp.allObjectLst.get(i);
 
             if (mc.hitBox.intersects(curObj.hitBox)) {
+                System.out.println("COLLISION");
                 curObj.reactToCollision(mc);
             }
 

@@ -17,17 +17,7 @@ public class StationaryEnemy extends PointAdjuster {
     }
 
 
-    public void announceGameOver(Graphics g){
-        String text = "Game over";
-        int x = gp.scrnWidth/2;
-        int y = gp.scrnHeight/2;
 
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,100));
-        g2D.drawString(text,x,y);
-
-    }
 
 
 }
