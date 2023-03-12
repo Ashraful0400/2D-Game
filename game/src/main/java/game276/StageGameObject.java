@@ -34,8 +34,8 @@ public abstract class StageGameObject {
             } else {
                 System.out.println("Doesn't exist");
             }
-            //sprite = ImageIO.read(new File(this.imagePath));
-            sprite = ImageIO.read(this.getClass().getResource(imagePath));
+            sprite = ImageIO.read(new File(this.imagePath));
+            //sprite = ImageIO.read(this.getClass().getResource(imagePath));
             
 
 
