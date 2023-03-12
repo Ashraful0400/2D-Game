@@ -25,8 +25,13 @@ public class ExitCell extends StageGameObject {
     }
 
     public void reactToCollision(MovableCharacter mc) {
-        //change the point checker as much as cheese you will make to end the game after collecting all the cheese
-        if(gp.points >= 3) {
+        // TODO - change the point checker as much as cheese you will make to end the game after collecting all the cheese
+        // TODO - Need to change gameOver condition (bonusRewards also count)
+
+        // TODO - Need to change so it WINS the game
+        if (mc == gp.player && gp.points >= 3) {
+            imagePath = "Images/door/doorOpen.png";
+            getImage();
             gp.isGameOver = true;
         }
     }

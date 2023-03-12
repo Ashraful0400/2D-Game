@@ -18,10 +18,5 @@ public class Barrier extends StageGameObject {
         mc.moveBack();
     }
 
-    // Just draws a rectangle for now
-    /*public void repaint(Graphics g) {
-        Graphics2D g2D = (Graphics2D) g;
-        //g2D.setColor(Color.blue);
-        //g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
-    }*/
+
 }
