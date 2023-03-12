@@ -18,11 +18,13 @@ public class Spawner {
     }
 
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 200, 200));
+        gp.allObjectLst.add(new ExitCell(gp, 725, 725));
     }
 
     public void generateBarriers() {
-        createBarrierAt(150, 150);
+
+            createBarrierAt(150, 150);
+
     }
     public void createBarrierAt(int x, int y) {
         Barrier newM = new Barrier(gp, x, y);
