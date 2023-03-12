@@ -21,27 +21,27 @@ public class Spawner {
         gp.allObjectLst.add(new ExitCell(gp, 200, 200));
     }
 
-    public void generateBarriers() {
+    private void generateBarriers() {
         createBarrierAt(150, 150);
     }
-    public void createBarrierAt(int x, int y) {
+    private void createBarrierAt(int x, int y) {
         Barrier newM = new Barrier(gp, x, y);
         gp.allObjectLst.add(newM);
         gp.barriersLst.add(newM);
     }
 
-    public void generateRewards() {
+    private void generateRewards() {
         createRewardAt(400, 400);
     } 
-    public void createRewardAt(int x, int y) {
+    private void createRewardAt(int x, int y) {
         gp.allObjectLst.add(new Reward(gp, x, y));
     }  
 
 
-    public void generateMovableEnemies() {
+    private void generateMovableEnemies() {
         createMovableEnemyAt(100, 400);
     }
-    public void createMovableEnemyAt(int x, int y) {
+    private void createMovableEnemyAt(int x, int y) {
         MovableEnemy newM = new MovableEnemy(gp, x, y);
         gp.allObjectLst.add(newM);
         gp.movEnemyLst.add(newM);
