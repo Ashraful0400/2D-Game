@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    // TODO - check negative points
     //screen settings
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
@@ -35,8 +34,6 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
     public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
     public ArrayList<Barrier> barriersLst = new ArrayList<Barrier>();
-
-
 
 
 
@@ -88,7 +85,12 @@ public class GamePanel extends JPanel implements Runnable {
                 e.printStackTrace();
             }
 
+            if (points < 0) {
+                isGameOver = true;
+            }
+
             repaint();
+
         }
     }
 
@@ -104,19 +106,6 @@ public class GamePanel extends JPanel implements Runnable {
             cHandler.processObjectCollision(movEnemyLst.get(i));
         }
     }
-
-    public void announceGameOver(Graphics g){
-        String text = "Game over";
-        int x = this.scrnWidth/2;
-        int y = this.scrnHeight/2;
-
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,100));
-        g2D.drawString(text,x,y);
-
-    }
-
 
 
     public void paintComponent(Graphics g) {
@@ -151,13 +140,25 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         
-
         if (isGameOver) {
             announceGameOver(g);
         }
         
         g.dispose();// Free resources related to g2D
     }
+
+    public void announceGameOver(Graphics g){
+        String text = "Game over";
+        int x = this.scrnWidth/2;
+        int y = this.scrnHeight/2;
+
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,100));
+        g2D.drawString(text,x,y);
+
+    }
+
 
 }
   

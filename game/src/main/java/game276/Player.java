@@ -25,7 +25,7 @@ public class Player extends MovableCharacter {
         prevY = y;
         
         if (keyboardInput.upKeyPressed) {
-            imagePath = "Images/mouse/mouseBack.png";
+            imagePath = "Images/mouse/mouseBack .png"; // TODO - space in images file
             getImage();
             //direction = "up";
             y -= speed;
