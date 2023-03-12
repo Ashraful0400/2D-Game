@@ -25,30 +25,48 @@ public class Player extends MovableCharacter {
         prevY = y;
         
         if (keyboardInput.upKeyPressed) {
-            imagePath = "Images/mouse/mouseBack .png"; // TODO - space in images file
-            getImage();
-            //direction = "up";
-            y -= speed;
+            moveUp();
         } else if (keyboardInput.leftKeyPressed) {
-            imagePath = "Images/mouse/mouseLeft.png";
-            getImage();
-            //direction = "left";
-            x -= speed;
+            moveLeft();
         } else if (keyboardInput.downKeyPressed) {
-            imagePath = "Images/mouse/mouseForward.png";
-            getImage();
-            //direction = "down";
-            y += speed;
+            moveDown();
         } else if (keyboardInput.rightKeyPressed) {
-            imagePath = "Images/mouse/mouseRight.png";
-            getImage();
-            //direction = "right";
-            x += speed;
+            moveRight();
         }
         CollisionOn = false;
         //gp.cChecker.processObjectCollision(this);
         resetHitboxPos();
     }
+
+    private void moveUp() {
+        imagePath = "Images/mouse/mouseBack .png"; // TODO - space in images file
+        getImage();
+        y -= speed;
+    }
+    private void moveLeft() {
+        if (imagePath == "Images/mouse/mouseLeft.png") {
+            imagePath = "Images/mouse/mouseLeft2.png";
+        } else {
+            imagePath = "Images/mouse/mouseLeft.png";
+        }
+        getImage();
+        x -= speed;
+    }
+    private void moveDown() {
+        imagePath = "Images/mouse/mouseForward.png";
+        getImage();
+        y += speed;
+    }
+    private void moveRight() {
+        if (imagePath == "Images/mouse/mouseRight.png") {
+            imagePath = "Images/mouse/mouseRight2.png";
+        } else {
+            imagePath = "Images/mouse/mouseRight.png";
+        }
+        getImage();
+        x += speed;
+    }
+    
 
     public void repaint(Graphics g) {
         if (gp.isGameOver) {
