@@ -17,12 +17,12 @@ public class GamePanel extends JPanel implements Runnable {
     int ogTileSize = 16;//16x16 tile
 
     public int tileSize = ogTileSize * scale;// 48 x 48 tile
-    public int maxScrnColNum = 16;
-    public int maxScrnRowNum = 16;
+    public int maxScrnColNum = 32; 
+    public int maxScrnRowNum = 20;
     public int points;
 
-    int scrnWidth = maxScrnColNum * tileSize; // 768 pixels
-    int scrnHeight = maxScrnRowNum * tileSize; //576 pixels
+    int scrnWidth = maxScrnColNum * tileSize; // 1536 pixels
+    int scrnHeight = maxScrnRowNum * tileSize; // 960 pixels
 
     Thread gThread;
 
