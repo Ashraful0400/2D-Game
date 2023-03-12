@@ -25,10 +25,19 @@ public abstract class StageGameObject {
 
 
 
-    public void getImage() {        // TODO -implement drawing
+    public void getImage() {        // TODO - delete one of the Images directories
         try {
             // load image for imagePath
-            sprite = ImageIO.read(new File(imagePath));
+            System.out.println(imagePath);
+            if (new File(imagePath).exists()) {
+                System.out.println("It's not null");
+            } else {
+                System.out.println("Doesn't exist");
+            }
+            //sprite = ImageIO.read(new File(this.imagePath));
+            sprite = ImageIO.read(this.getClass().getResource(imagePath));
+            
+
 
         } catch (Exception e) {
             e.printStackTrace();

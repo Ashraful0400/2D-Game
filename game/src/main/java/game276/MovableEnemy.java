@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+import java.io.File;
 
 
 public class MovableEnemy extends MovableCharacter {
@@ -30,7 +32,6 @@ public class MovableEnemy extends MovableCharacter {
 
         imagePath = "Images/cat/catLeft1.png";
         getImage();
-
     }
 
     public void move() {

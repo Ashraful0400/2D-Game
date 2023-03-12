@@ -6,16 +6,17 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import java.io.File;
 
+import java.io.File;
+
 public class Player extends MovableCharacter {
     public InputHandler keyboardInput = new InputHandler();
 
     public Player(GamePanel gp, int startingX, int startingY) {
         super(gp, startingX, startingY);
-
-
-        imagePath = "Images/mouse/mouse-1.png.png";
-        getImage();
+        imagePath = "Images/mouse/mouseForward.png";
         this.speed = 5;
+        this.getImage();
+
     }
 
     public void move() {

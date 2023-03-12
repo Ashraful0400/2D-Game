@@ -150,6 +150,8 @@ public class GamePanel extends JPanel implements Runnable {
             allObjectLst.get(i).repaint(g);
         }
 
+        
+
         if (isGameOver) {
             announceGameOver(g);
         }
