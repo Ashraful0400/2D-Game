@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     int fps = 60;
     public UI ui = new UI(this);
     public CollisionHandler cHandler = new CollisionHandler(this);
-    public boolean isGameOver;
+    public boolean isGameOver ;
     //Calling Barrier Manager
     // BarrierManager tileM = new BarrierManager(this);
     public GamePanel() {
@@ -89,6 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
             if (points < 0) {
                 isGameOver = true;
             }
+
 
             repaint();
 

@@ -14,10 +14,11 @@ public class Spawner {
         generateMovableEnemies();
         generateRewards();
         generateBarriers();
+        generateExitDoor();
     }
 
-    private void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 1000, 1000));
+    public void generateExitDoor() {
+        gp.allObjectLst.add(new ExitCell(gp, 200, 200));
     }
 
     private void generateBarriers() {
