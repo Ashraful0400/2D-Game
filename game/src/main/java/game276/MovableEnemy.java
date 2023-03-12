@@ -58,12 +58,20 @@ public class MovableEnemy extends MovableCharacter {
         Double minDist = distLst.get(0);
 
         if (minDist == upDist) {
+            imagePath = "Images/cat/catBack1.png";
+            getImage();
             y -= speed;
         } else if (minDist == leftDist) {
+            imagePath = "Images/cat/catLeft1.png";
+            getImage();
             x -= speed;
         } else if (minDist == downDist) {
+            imagePath = "Images/cat/catRight1.png";
+            getImage();
             y += speed;
         } else if (minDist == rightDist) {
+            imagePath = "Images/cat/catRight1.png";
+            getImage();
             x += speed;
         } 
 
@@ -89,12 +97,20 @@ public class MovableEnemy extends MovableCharacter {
     public void moveAgain() { // Assumes distLst && all direction fields is set
         Double secondMinDist = distLst.get(1);
         if (secondMinDist == upDist) {
+            imagePath = "Images/cat/catBack1.png";
+            getImage();
             y -= speed;
         } else if (secondMinDist == leftDist) {
+            imagePath = "Images/cat/catLeft1.png";
+            getImage();
             x -= speed;
         } else if (secondMinDist == downDist) {
+            imagePath = "Images/cat/catRight1.png";
+            getImage();
             y += speed;
         } else if (secondMinDist == rightDist) {
+            imagePath = "Images/cat/catRight1.png";
+            getImage();
             x += speed;
         } 
     }

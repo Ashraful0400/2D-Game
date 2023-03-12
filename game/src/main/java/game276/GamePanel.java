@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    // TODO - check negative points
     //screen settings
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
@@ -39,11 +38,10 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 
-
-
     int fps = 60;
+    public UI ui = new UI(this);
     public CollisionHandler cHandler = new CollisionHandler(this);
-    public boolean isGameOver;
+    public boolean isGameOver ;
     //Calling Barrier Manager
     // BarrierManager tileM = new BarrierManager(this);
     public GamePanel() {
@@ -88,7 +86,13 @@ public class GamePanel extends JPanel implements Runnable {
                 e.printStackTrace();
             }
 
+            if (points < 0) {
+                isGameOver = true;
+            }
+
+
             repaint();
+
         }
     }
 
@@ -104,19 +108,6 @@ public class GamePanel extends JPanel implements Runnable {
             cHandler.processObjectCollision(movEnemyLst.get(i));
         }
     }
-
-    public void announceGameOver(Graphics g){
-        String text = "Game over";
-        int x = this.scrnWidth/2;
-        int y = this.scrnHeight/2;
-
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,100));
-        g2D.drawString(text,x,y);
-
-    }
-
 
 
     public void paintComponent(Graphics g) {
@@ -149,15 +140,77 @@ public class GamePanel extends JPanel implements Runnable {
         for (int i = 0; i < allObjectLst.size(); i++) {
             allObjectLst.get(i).repaint(g);
         }
-
+        Graphics2D g2 = (Graphics2D)g;
+        ui.draw(g2);
         
-
         if (isGameOver) {
             announceGameOver(g);
         }
         
         g.dispose();// Free resources related to g2D
     }
+
+    public void announceGameOver(Graphics g){
+        String text;
+        int x;
+        int y;
+        int width;
+        FontMetrics fm;
+
+        Graphics2D g2D = (Graphics2D) g;
+
+        text = "Game Over";
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,100));
+        fm = g2D.getFontMetrics(g2D.getFont());
+
+        width = fm.stringWidth(text);
+        x = (this.scrnWidth - width)/2;
+        y = this.scrnHeight/5;
+        g2D.drawString(text,x,y);
+
+        text = "Cheese: "+points;
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,75));
+        fm = g2D.getFontMetrics(g2D.getFont());
+
+        width = fm.stringWidth(text);
+        x = (this.scrnWidth - width)/2;
+        y += 125;
+        g2D.drawString(text,x,y);
+
+        text = "Time: "+ui.dFormat.format(ui.playTime);
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,75));
+        fm = g2D.getFontMetrics(g2D.getFont());
+
+        width = fm.stringWidth(text);
+        x = (this.scrnWidth - width)/2;
+        y += 75;
+        g2D.drawString(text,x,y);
+
+        text = "Restart";
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,50));
+        fm = g2D.getFontMetrics(g2D.getFont());
+
+        width = fm.stringWidth(text);
+        x = (this.scrnWidth - width)/2;
+        y += 100;
+        g2D.drawString(text,x,y);
+
+        text = "Quit";
+        g2D.setColor(Color.white);
+        g2D.setFont(new Font("Courier",Font.BOLD,50));
+        fm = g2D.getFontMetrics(g2D.getFont());
+
+        width = fm.stringWidth(text);
+        x = (this.scrnWidth - width)/2;
+        y += 50;
+        g2D.drawString(text,x,y);
+
+    }
+
 
 }
   

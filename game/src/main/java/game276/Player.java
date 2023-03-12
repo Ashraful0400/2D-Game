@@ -25,16 +25,24 @@ public class Player extends MovableCharacter {
         prevY = y;
         
         if (keyboardInput.upKeyPressed) {
-            direction = "up";
+            imagePath = "Images/mouse/mouseBack .png"; // TODO - space in images file
+            getImage();
+            //direction = "up";
             y -= speed;
         } else if (keyboardInput.leftKeyPressed) {
-            direction = "left";
+            imagePath = "Images/mouse/mouseLeft.png";
+            getImage();
+            //direction = "left";
             x -= speed;
         } else if (keyboardInput.downKeyPressed) {
-            direction = "down";
+            imagePath = "Images/mouse/mouseForward.png";
+            getImage();
+            //direction = "down";
             y += speed;
         } else if (keyboardInput.rightKeyPressed) {
-            direction = "right";
+            imagePath = "Images/mouse/mouseRight.png";
+            getImage();
+            //direction = "right";
             x += speed;
         }
         CollisionOn = false;
@@ -42,11 +50,12 @@ public class Player extends MovableCharacter {
         resetHitboxPos();
     }
 
-    // Just draws a rectangle for now
     public void repaint(Graphics g) {
+        if (gp.isGameOver) {
+            imagePath = "Images/mouse/mouseDie.png";
+            getImage();
+        }
         Graphics2D g2D = (Graphics2D) g;
-        //g2D.setColor(Color.white);
-        //g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
         g2D.drawImage(sprite,x,y,gp.tileSize, gp.tileSize, null);
     }
 

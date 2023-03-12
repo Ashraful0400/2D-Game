@@ -1,0 +1,5 @@
+ - Removed stages due to time constraints (replaced with 1 GamePanel)
+ - Pulled out all entitity-spawning responsibilities from GamePanel to Spawner due to the GamePanel becoming unneccessarily long
+ - Pulled out responsibility of announcing game is over from classes to GamePanel to minimize number of classes directly announcing game is over
+ - Changed from float positions to integer positions taking account that they would now be based in pixels
+ - Added moveAgain() method to MovableEnemy to move it again once hitting a barrier
