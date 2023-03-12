@@ -43,7 +43,4 @@ public abstract class MovableCharacter extends StageGameObject {
         y = prevY;
     }
 
-    public void resetHitboxPos(MovableCharacter mc) {
-        gp.isGameOver = true;
-    }
 }
