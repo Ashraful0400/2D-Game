@@ -18,7 +18,7 @@ public class Spawner {
     }
 
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 1000, 100));
+        gp.allObjectLst.add(new ExitCell(gp, 1400, 750));
     }
 
     private void generateBarriers() {
