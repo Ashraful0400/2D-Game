@@ -19,16 +19,16 @@ public class ExitCell extends StageGameObject {
        
         hitboxLength = 10;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
-        try {
-            //possible error
-            sprite = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        imagePath = "Images/door/doorClose.png";
+        getImage();
 
-        collision = true;
     }
 
-
+    public void reactToCollision(MovableCharacter mc) {
+        //change the point checker as much as cheese you will make to end the game after collecting all the cheese
+        if(gp.points >= 3) {
+            gp.isGameOver = true;
+        }
+    }
 }
 
