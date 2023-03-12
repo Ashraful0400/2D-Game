@@ -58,26 +58,16 @@ public class MovableEnemy extends MovableCharacter {
         Double minDist = distLst.get(0);
 
         if (minDist == upDist) {
-            imagePath = "Images/cat/catBack1.png";
-            getImage();
-            y -= speed;
+            moveUp();
         } else if (minDist == leftDist) {
-            imagePath = "Images/cat/catLeft1.png";
-            getImage();
-            x -= speed;
+            moveLeft();
         } else if (minDist == downDist) {
-            imagePath = "Images/cat/catRight1.png";
-            getImage();
-            y += speed;
+            moveDown();
         } else if (minDist == rightDist) {
-            imagePath = "Images/cat/catRight1.png";
-            getImage();
-            x += speed;
+            moveRight();
         } 
 
-        System.out.println(" " + x + " " + y);
         resetHitboxPos();
-
     }
 
     private double getDistanceFromPlayer(int newX, int newY) {
@@ -87,31 +77,52 @@ public class MovableEnemy extends MovableCharacter {
         return Math.sqrt(xDist*xDist + yDist*yDist);
     }
 
+    private void moveUp() {
+        imagePath = "Images/cat/catBack1.png";
+        getImage();
+        y -= speed;
+    }
+    private void moveLeft() {
+        if (imagePath == "Images/cat/catLeft1.png") {
+            imagePath = "Images/cat/catLeft1.png";
+        } else {
+            imagePath = "Images/cat/catLeft1.png";
+        }
+        getImage();
+        x -= speed;
+    }
+    private void moveDown() {
+        imagePath = "Images/cat/catRight1.png";
+        getImage();
+        y += speed;
+    }
+    private void moveRight() {
+        if (imagePath == "Images/cat/catRight1.png") {
+            imagePath = "Images/cat/catRight2.png";
+        } else {
+            imagePath = "Images/cat/catRight1.png";
+        }
+        getImage();
+        x += speed;
+    }
+    
+
     public void moveBack() {
         super.moveBack();
         moveAgain();
-        // TODO - need to find a way to move MovableEnemy again to another direction
     }
 
     // TODO - Gets stuck still even if not a corner
     public void moveAgain() { // Assumes distLst && all direction fields is set
         Double secondMinDist = distLst.get(1);
         if (secondMinDist == upDist) {
-            imagePath = "Images/cat/catBack1.png";
-            getImage();
-            y -= speed;
+            moveUp();
         } else if (secondMinDist == leftDist) {
-            imagePath = "Images/cat/catLeft1.png";
-            getImage();
-            x -= speed;
+            moveLeft();
         } else if (secondMinDist == downDist) {
-            imagePath = "Images/cat/catRight1.png";
-            getImage();
-            y += speed;
+            moveDown();
         } else if (secondMinDist == rightDist) {
-            imagePath = "Images/cat/catRight1.png";
-            getImage();
-            x += speed;
+            moveRight();
         } 
     }
 
