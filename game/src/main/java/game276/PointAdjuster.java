@@ -38,11 +38,9 @@ public abstract class PointAdjuster extends StageGameObject{
     }
 
 
-
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.green);
-        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+        g2D.drawImage(sprite, x,y,gp.tileSize,gp.tileSize,null);
     }
 
     

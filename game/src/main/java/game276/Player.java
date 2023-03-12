@@ -13,7 +13,7 @@ public class Player extends MovableCharacter {
         super(gp, startingX, startingY);
 
 
-        imagePath = "mouse/mouse1.png.png";
+        imagePath = "Images/mouse/mouse-1.png.png";
         getImage();
         this.speed = 5;
     }
@@ -44,8 +44,9 @@ public class Player extends MovableCharacter {
     // Just draws a rectangle for now
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.white);
-        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+        //g2D.setColor(Color.white);
+        //g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+        g2D.drawImage(sprite,x,y,gp.tileSize, gp.tileSize, null);
     }
 
 }

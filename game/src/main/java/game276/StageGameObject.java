@@ -26,24 +26,23 @@ public abstract class StageGameObject {
 
 
     public void getImage() {        // TODO -implement drawing
-
-        /* try {
-            //sprite = ImageIO.read(getClass().getResource("Images/" + imagePath));
-            sprite = ImageIO.read(new File("Images/mouse/mouse-1.png.png"));
+        try {
+            // load image for imagePath
+            sprite = ImageIO.read(new File(imagePath));
 
         } catch (Exception e) {
             e.printStackTrace();
-        } */
-        return;
+        }
+
     }
 
     public void repaint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
         
         // TODO -implement drawing
-        // g2D.drawImage(sprite, x,y,gp.tileSize,gp.tileSize,null);
-        g2D.setColor(Color.white);
-        g2D.fillRect(x, y, hitboxLength, hitboxLength);
+        g2D.drawImage(sprite, x,y,gp.tileSize,gp.tileSize,null);
+        //g2D.setColor(Color.white);
+        //g2D.fillRect(x, y, hitboxLength, hitboxLength);
     }
 
 

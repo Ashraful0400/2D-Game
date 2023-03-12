@@ -9,6 +9,8 @@ public class Barrier extends StageGameObject {
        
         hitboxLength = gp.tileSize;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
+        imagePath = "Images/wall/wall.png";
+        getImage();
     }
 
 
@@ -17,9 +19,9 @@ public class Barrier extends StageGameObject {
     }
 
     // Just draws a rectangle for now
-    public void repaint(Graphics g) {
+    /*public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.blue);
-        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
-    }
+        //g2D.setColor(Color.blue);
+        //g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+    }*/
 }

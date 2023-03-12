@@ -28,7 +28,7 @@ public class MovableEnemy extends MovableCharacter {
         this.speed = 2;
         player = gp.player;
 
-        imagePath = "cat/New Piskel-1.png (1).png";
+        imagePath = "Images/cat/catLeft1.png";
         getImage();
 
     }
@@ -102,8 +102,9 @@ public class MovableEnemy extends MovableCharacter {
     // Just draws a rectangle for now
     public void repaint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.red);
-        g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+        //g2D.setColor(Color.red);
+        //g2D.fillRect(x, y, gp.tileSize, gp.tileSize);
+        g2D.drawImage(sprite,x,y,gp.tileSize,gp.tileSize,null);
     }
 
     public void reactToCollision(MovableCharacter mc) {
