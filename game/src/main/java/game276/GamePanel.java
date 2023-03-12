@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     int fps = 60;
+    public UI ui = new UI(this);
     public CollisionHandler cHandler = new CollisionHandler(this);
     public boolean isGameOver;
     //Calling Barrier Manager
@@ -138,7 +139,8 @@ public class GamePanel extends JPanel implements Runnable {
         for (int i = 0; i < allObjectLst.size(); i++) {
             allObjectLst.get(i).repaint(g);
         }
-
+        Graphics2D g2 = (Graphics2D)g;
+        ui.draw(g2);
         
         if (isGameOver) {
             announceGameOver(g);

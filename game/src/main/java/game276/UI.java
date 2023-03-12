@@ -11,7 +11,7 @@ public class UI {
     public UI(GamePanel gp){
         this.gp = gp;
 
-        arial_40 =  new Font("Jokerman",Font.PLAIN,40);
+        arial_40 =  new Font("Arial",Font.PLAIN,40);
 
     }
 
@@ -20,5 +20,5 @@ public void draw(Graphics2D g2){
     g2.setColor(Color.white);
     //Change the number to draw in the screen as needed
     g2.drawString("cheese = " + gp.points,25,50);
-}
+    }
 }
