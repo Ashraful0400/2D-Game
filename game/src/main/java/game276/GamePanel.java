@@ -89,7 +89,10 @@ public class GamePanel extends JPanel implements Runnable {
             if (points < 0) {
                 isGameOver = true;
             }
-
+        // As Nick you said to collect a certain amount of point just to end the game
+            if (points > 0) {
+                isGameOver = true;
+            }
 
             repaint();
 
