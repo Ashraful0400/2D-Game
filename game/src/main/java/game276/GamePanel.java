@@ -10,9 +10,16 @@ import javax.swing.JPanel;
 
 import java.util.ArrayList;
 
+/**
+ * This class is the main body of 2d game
+ *
+ */
 public class GamePanel extends JPanel implements Runnable {
 
-    //screen settings
+    /**
+     * screen settings
+     *
+     */
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
 
@@ -44,6 +51,10 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean isGameOver ;
     //Calling Barrier Manager
     // BarrierManager tileM = new BarrierManager(this);
+
+    /**
+     * Constructor
+     */
     public GamePanel() {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);
@@ -53,10 +64,19 @@ public class GamePanel extends JPanel implements Runnable {
         points = 0;
 
     }
+
+    /**
+     * This method is responsible for calling
+     * method to create all objects that should
+     * be in the game, player is excluded
+     */
     public void setUpGame(){
         spawner.generateAllEntitiesExceptPlayer(); // gp's allObjectLst[0] == always exitDoor
     }
 
+    /**
+     * this method crates thread that runs the game
+     */
     public void startThread() {
         isGameOver = false;
         gThread = new Thread(this);
@@ -64,7 +84,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
 
-
+    /**
+     * implements run method that from runnable,
+     * this method runs until the game stop
+     * in each iteration, it is going to call
+     * update method to update each tick
+     *
+     */
     public void run() {
         Double drawInterval = 1000000000.0 / fps;
         Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
@@ -96,7 +122,10 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-
+    /**
+     * this method update position for each object
+     * and call collision handler when it gets called
+     */
     public void update() {
         player.move();
         for (int i = 0; i < movEnemyLst.size(); i++) {
@@ -109,7 +138,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-
+    /**
+     * this method draws each object when it gets called
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g) {
         /* super.paintComponent(g);
         //draws tiles
@@ -152,6 +185,11 @@ public class GamePanel extends JPanel implements Runnable {
         g.dispose();// Free resources related to g2D
     }
 
+    /**
+     * displays end game message on the screen
+     * when game is over
+     * @param g for display graphics on the screen
+     */
     public void announceGameOver(Graphics g){
         String text;
         int x;

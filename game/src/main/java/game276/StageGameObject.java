@@ -10,7 +10,13 @@ import javafx.scene.image.Image;
 
 import java.awt.*;
 
+/**
+ * represents objects that will be on the game window
+ */
 public abstract class StageGameObject {
+    /**
+     * setting
+     */
     public int x;
     public int y; //y increase -> move downward
     public String imagePath;
@@ -22,9 +28,9 @@ public abstract class StageGameObject {
     public int hitboxLength;
 
 
-
-
-
+    /**
+     * get image of the objects
+     */
     public void getImage() {        // TODO - delete one of the Images directories
         try {
             // load image for imagePath
@@ -45,6 +51,10 @@ public abstract class StageGameObject {
 
     }
 
+    /**
+     * drawing the objects
+     * @param g graphic for drawing the objects
+     */
     public void repaint(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
         
@@ -54,7 +64,10 @@ public abstract class StageGameObject {
         //g2D.fillRect(x, y, hitboxLength, hitboxLength);
     }
 
-
+    /**
+     * things to do when collide with character
+     * @param mc character that is collided
+     */
     public void reactToCollision(MovableCharacter mc) {};
 
     /* public static BufferedImage image;
