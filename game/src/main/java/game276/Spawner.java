@@ -32,13 +32,13 @@ public class Spawner {
      * Create barrier, call constructor of Barrier
      */
     private void generateFloors() {
-        createFloorsAt(25,25);
+        createFloorsAt(00,00);
         createFloorsAt(1375,25);
-        for(int i = 25; i < 1400; i++){
-            for(int j = 25; j < 770; j++)
+        for(int i = 00; i < 1400; i++){
+            for(int j = 00; j < 800; j++)
             {
                 //change 25 to i to make the floor
-                createFloorsAt(25,j);
+                createFloorsAt(i,j);
                 j += 40;
             }
             i += 40;
@@ -61,34 +61,38 @@ public class Spawner {
      * Create exit, call constructor of ExitCell
      */
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 1385, 750));
+        gp.allObjectLst.add(new ExitCell(gp, 1405, 800));
     }
 
     /**
      * Create barrier, call constructor of Barrier
      */
     private void generateBarriers() {
-    for(int i = -25; i < 1380 ; i++) {
+       // createBarrierAt(-50, -50);
+        //creating barrier at top
+    for(int i = -50; i < 1450 ; i++) {
         i += 50;
-        createBarrierAt(i, -25);
-    }
-
-        for(int i = -25; i < 750 ; i++)
+        createBarrierAt(i, -50);
+        }
+        //creating barrier at left
+        for(int i = -50; i < 750 ; i++)
         {
             i += 50;
-            createBarrierAt(-25, i);
+            createBarrierAt(-50, i);
         }
-        for(int i = -25; i < 1380 ; i++)
+        //creating barrier at bottom
+        for(int i = -50; i < 1450 ; i++)
         {
             i += 50;
-            createBarrierAt(i, 800);
+            createBarrierAt(i, 850);
         }
-        for(int i = -25; i < 725 ; i++)
+        //creating barrier at right
+        for(int i = -50; i < 850; i++)
         {
             i += 50;
-            createBarrierAt(1425, i);
+            createBarrierAt(1450, i);
         }
-        createBarrierAt(1425, 750);
+        createBarrierAt(1450, 750);
 }
 
 
