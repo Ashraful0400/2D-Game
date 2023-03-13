@@ -31,7 +31,7 @@ public class Spawner {
      * Create barrier, call constructor of Barrier
      */
     private void generateFloors() {
-        createFloorsAt(10,10);
+        createFloorsAt(25,20);
     }
 
 
