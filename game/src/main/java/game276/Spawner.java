@@ -31,7 +31,17 @@ public class Spawner {
      * Create barrier, call constructor of Barrier
      */
     private void generateFloors() {
-        createFloorsAt(25,20);
+        createFloorsAt(25,25);
+        createFloorsAt(1375,25);
+        for(int i = 25; i < 1400; i++){
+            for(int j = 25; j < 780; j++)
+            {
+                j += 40;
+                //change 25 to i to make the floor
+                createFloorsAt(25,j);
+            }
+            i += 40;
+        }
     }
 
 
@@ -50,32 +60,32 @@ public class Spawner {
      * Create exit, call constructor of ExitCell
      */
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 1350, 750));
+        gp.allObjectLst.add(new ExitCell(gp, 1375, 750));
     }
 
     /**
      * Create barrier, call constructor of Barrier
      */
     private void generateBarriers() {
-    for(int i = -25; i < 1400 ; i++) {
+    for(int i = -25; i < 1425 ; i++) {
         i += 50;
         createBarrierAt(i, -25);
     }
 
-        for(int i = -25; i < 800 ; i++)
+        for(int i = -25; i < 850 ; i++)
         {
             i += 50;
             createBarrierAt(-25, i);
         }
-        for(int i = -25; i < 1400 ; i++)
+        for(int i = -25; i < 1425 ; i++)
         {
             i += 50;
-            createBarrierAt(i, 800);
+            createBarrierAt(i, 850);
         }
-        for(int i = -25; i < 800 ; i++)
+        for(int i = -25; i < 850 ; i++)
         {
             i += 50;
-            createBarrierAt(1400, i);
+            createBarrierAt(1425, i);
         }
 }
 
