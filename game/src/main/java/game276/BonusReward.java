@@ -1,9 +1,7 @@
 package game276;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -22,6 +20,7 @@ public class BonusReward extends Reward{
         super(gp, x, y);
         this._amountToAdjust = 5;
         hitboxLength = gp.tileSize;
+        hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/cheese/bigCheese.png";
         getImage();
     }
