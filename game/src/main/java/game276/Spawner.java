@@ -19,13 +19,14 @@ public class Spawner {
      * Create all objects except player
      */
     public void generateAllEntitiesExceptPlayer() {
-        //generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
+        // Draw the floor and exitDoor first
+        generateFloors();
+        generateExitDoor();
         generateMovableEnemies();
         generateRewards();
         generateBarriers();
-        generateExitDoor();
         generateRewardsBonus();
-        generateFloors();
+        
     }
     /**
      * Create barrier, call constructor of Barrier

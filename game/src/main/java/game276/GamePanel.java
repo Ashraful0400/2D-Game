@@ -29,7 +29,6 @@ public class GamePanel extends JPanel implements Runnable {
     public int points;
 
     public int endGameOP = 0;
-
     public boolean didWinGame = false;
 
     int scrnWidth = maxScrnColNum * tileSize; // 1536 pixels
@@ -53,8 +52,6 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public CollisionHandler cHandler = new CollisionHandler(this);
     public boolean isGameOver ;
-    //Calling Barrier Manager
-    // BarrierManager tileM = new BarrierManager(this);
 
     /**
      * Constructor
@@ -182,32 +179,8 @@ public class GamePanel extends JPanel implements Runnable {
      * @param g the <code>Graphics</code> object to protect
      */
     public void paintComponent(Graphics g) {
-        /* super.paintComponent(g);
-        //draws tiles
-        //TODO - might be a prob
-        // tileM.draw((Graphics2D) g);
-        for(int i = 0; i < pointAdjusterLst.size(); i++){
-            pointAdjusterLst.get(i).repaint(g);
-        }
-
-        //draws object
-        for(int i = 0; i < obj.length; i++) {
-            if(obj[i] != null ){
-                obj[i].draw((Graphics2D)g ,this);
-            }
-        }
-        //draws player
-        player.repaint(g);
-        for (int i = 0; i < movEnemyLst.size(); i++) {
-            movEnemyLst.get(i).repaint(g);
-        }
-      
-
-        g.dispose();// Free resources related to g2D
- */
 
         super.paintComponent(g);
-        player.repaint(g);
         for (int i = 0; i < allObjectLst.size(); i++) {
             allObjectLst.get(i).repaint(g);
         }
@@ -215,6 +188,8 @@ public class GamePanel extends JPanel implements Runnable {
         if(!isGameOver) {
             ui.draw(g2);
         }
+        player.repaint(g);
+
         
         if (isGameOver) {
             announceGameOver(g);
