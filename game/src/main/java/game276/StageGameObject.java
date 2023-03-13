@@ -3,11 +3,7 @@ package game276;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-// import javax.imageio.BufferedImage;
 import java.awt.image.BufferedImage;
-import javax.swing.JLabel;
-import javafx.scene.image.Image;
-
 import java.awt.*;
 
 /**
@@ -31,20 +27,10 @@ public abstract class StageGameObject {
     /**
      * get image of the objects
      */
-    public void getImage() {        // TODO - delete one of the Images directories
+    public void getImage() {
         try {
-            // load image for imagePath
-            System.out.println(imagePath);
-            if (new File(imagePath).exists()) {
-                System.out.println("It's not null");
-            } else {
-                System.out.println("Doesn't exist");
-            }
-            //sprite = ImageIO.read(new File(this.imagePath));
+            //sprite = ImageIO.read(new File(this.imagePath)); // works only on some computers
             sprite = ImageIO.read(this.getClass().getResource(imagePath));
-            
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

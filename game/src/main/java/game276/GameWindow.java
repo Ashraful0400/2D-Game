@@ -6,7 +6,7 @@ import javax.swing.JFrame;
  */
 public class GameWindow {
     /**
-     * setting up game window and run the game panel
+     * setting up game window and run the game panel (what will be drawn in the window)
      */
     public void runGame() {
         JFrame gameWindow = new JFrame();

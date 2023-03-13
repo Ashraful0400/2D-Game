@@ -26,11 +26,10 @@ public class Barrier extends StageGameObject {
     /**
      * This method is going to push characters back
      * to where they are at the previous tick
-     * @param mc the movable character that collide with this barrier
+     * @param mc the movable character that collided with this barrier
      */
     public void reactToCollision(MovableCharacter mc) {
         mc.moveBack();
     }
-
 
 }

@@ -2,7 +2,6 @@ package game276;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.*;
 
@@ -35,7 +34,6 @@ public abstract class PointAdjuster extends StageGameObject{
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
 
         this._amountToAdjust = -1;// -1: amount not assign
-
     }
 
     /**

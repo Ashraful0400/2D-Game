@@ -16,15 +16,6 @@ public abstract class MovableCharacter extends StageGameObject {
     // Needed for moveBack()
     public int prevX;
     public int prevY;
-    // CollisionHandler
-    //need to add this below line after implementing at video 8 at 18.21 min
-    //pickUpObject(objIndex);
-
-    //check tile collision
-    public boolean CollisionOn = false;
-    //check object collision
-   //int objIndex = gp.cChecker.checkObject(this, true);
-
     /**
      * Constructor
      * @param gp game panel that the character will be placed
@@ -35,10 +26,8 @@ public abstract class MovableCharacter extends StageGameObject {
         this.gp = gp;
         this.x = startingX;
         this.y = startingY;
-       
         hitboxLength = gp.tileSize;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
-
     }
 
     /**
@@ -62,5 +51,4 @@ public abstract class MovableCharacter extends StageGameObject {
         x = prevX;
         y = prevY;
     }
-
 }

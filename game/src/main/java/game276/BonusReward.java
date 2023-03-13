@@ -1,8 +1,6 @@
 package game276;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * This class represents an object
