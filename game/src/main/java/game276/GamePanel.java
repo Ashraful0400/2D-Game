@@ -198,7 +198,7 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2D = (Graphics2D) g;
 
         text = "Game Over";
-        g2D.setColor(Color.white);
+        g2D.setColor(Color.red);
         g2D.setFont(new Font("Courier",Font.BOLD,100));
         fm = g2D.getFontMetrics(g2D.getFont());
 
@@ -207,7 +207,7 @@ public class GamePanel extends JPanel implements Runnable {
         y = this.scrnHeight/5;
         g2D.drawString(text,x,y);
 
-        text = "Cheese: "+points;
+        text = "Point: "+points;
         g2D.setColor(Color.white);
         g2D.setFont(new Font("Courier",Font.BOLD,75));
         fm = g2D.getFontMetrics(g2D.getFont());
