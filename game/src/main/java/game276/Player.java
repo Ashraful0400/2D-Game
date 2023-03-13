@@ -90,13 +90,14 @@ public class Player extends MovableCharacter {
     public void repaint(Graphics g) {
         if (gp.isGameOver) {
             imagePath = "Images/mouse/mouseDie.png";
-            getImage();
-        } else if (gp.didWinGame) { // Mouse hold cheese when he wins
-            if (imagePath == "Images/mouse/mouseLeft.png" || imagePath == "Images/mouse/mouseLeft2.png") {
-                imagePath = "Images/mouse/CheeseLeft";
-            } else if (imagePath == "Images/mouse/mouseRight.png" || imagePath == "Images/mouse/mouseRight2.png") {
-                imagePath = "Images/mouse/CheeseRight";
+            if (gp.didWinGame) { // Mouse hold cheese when he wins
+                if (imagePath == "Images/mouse/mouseLeft.png" || imagePath == "Images/mouse/mouseLeft2.png") {
+                    imagePath = "Images/mouse/CheeseLeft";
+                } else if (imagePath == "Images/mouse/mouseRight.png" || imagePath == "Images/mouse/mouseRight2.png") {
+                    imagePath = "Images/mouse/CheeseRight";
+                }
             }
+            getImage();
         }
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(sprite,x,y,gp.tileSize, gp.tileSize, null);

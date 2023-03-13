@@ -132,6 +132,8 @@ public class GamePanel extends JPanel implements Runnable {
                         case 0:
                             player.x = 100;
                             player.y = 100;
+                            player.imagePath = "Images/mouse/mouseForward.png";
+                            player.getImage();
                             points = 0;
                             endGameOP = 0;
                             ui.playTime = 0;
@@ -143,6 +145,7 @@ public class GamePanel extends JPanel implements Runnable {
                             }
                             setUpGame();
                             isGameOver = false;
+                            didWinGame = false;
                             break;
                         case 1:
                             System.exit(0);
@@ -226,7 +229,7 @@ public class GamePanel extends JPanel implements Runnable {
      * @param g for display graphics on the screen
      */
     public void announceGameOver(Graphics g){
-        String text;
+        String text = "";
         int x;
         int y;
         int width;
@@ -234,8 +237,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2D = (Graphics2D) g;
 
-        text = "Game Over";
-        g2D.setColor(Color.red);
+        if(isGameOver) {
+            text = "Game Over";
+            g2D.setColor(Color.red);
+            if(didWinGame){
+                text = "Congratulation";
+                g2D.setColor(Color.yellow);
+            }
+        }
         g2D.setFont(new Font("Courier",Font.BOLD,100));
         fm = g2D.getFontMetrics(g2D.getFont());
 
