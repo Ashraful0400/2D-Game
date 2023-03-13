@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 /**
- *  class for displaying time and the points
+ *  Class for displaying time and points
  */
 public class UI {
     /**
@@ -36,7 +36,7 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         //Change the number to draw in the screen as needed
-        g2.drawString("cheese = " + gp.points,25,50);
+        g2.drawString("Points = " + gp.points,25,50);
 
         //Time
         playTime += (double)1/60;

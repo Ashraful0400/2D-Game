@@ -48,7 +48,7 @@ public class ExitCell extends StageGameObject {
         if (mc == gp.player && gp.points >= 3) {
             imagePath = "Images/door/doorOpen.png";
             getImage();
-            gp.isGameOver = true;
+            gp.didWinGame = true;
         }
     }
 }

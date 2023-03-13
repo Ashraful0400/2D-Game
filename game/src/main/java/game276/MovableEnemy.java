@@ -2,17 +2,9 @@ package game276;
 
 import java.lang.Math;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
-import javax.imageio.ImageIO;
-import java.io.File;
 
 /**
  * represents an object that is going to follow the main character
@@ -47,8 +39,6 @@ public class MovableEnemy extends MovableCharacter {
      * moves enemy towards main character
      */
     public void move() {
-
-
         prevX = x;
         prevY = y;
 
@@ -83,7 +73,7 @@ public class MovableEnemy extends MovableCharacter {
     }
 
     /**
-     * calculates distance form player
+     * Calculates distance from player
      * for decides which direction enemy should go
      * @param newX current x of enemy
      * @param newY current y of enemy
@@ -145,8 +135,6 @@ public class MovableEnemy extends MovableCharacter {
         moveAgain();
     }
 
-    // TODO - Gets stuck still even if not a corner
-
     /**
      * move to avoid stuck
      */
@@ -180,7 +168,8 @@ public class MovableEnemy extends MovableCharacter {
      * @param mc
      */
     public void reactToCollision(MovableCharacter mc) {
-        gp.isGameOver = true;
+        if (mc == gp.player) {
+            gp.isGameOver = true;
+        }
     }
-    
 }
