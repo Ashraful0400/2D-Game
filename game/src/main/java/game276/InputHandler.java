@@ -3,17 +3,34 @@ package game276;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * handles input from player
+ */
 public class InputHandler implements KeyListener {
+    /**
+     * kays that handler cares able
+     */
     public boolean upKeyPressed;
     public boolean downKeyPressed;
     public boolean leftKeyPressed;
     public boolean rightKeyPressed;
 
+    /**
+     * react to key that typed
+     * now: nothing to happen
+     * @param E the event to be processed
+     */
     @Override
     public void keyTyped(KeyEvent E) {
 
     }
 
+    /**
+     * react when key is pressed
+     * for detecting which direction player wants
+     * main character to be
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int input = e.getKeyCode();
@@ -30,6 +47,11 @@ public class InputHandler implements KeyListener {
         }
     }
 
+    /**
+     * reacts to key when it is released
+     * for detect a stop for main character
+     * @param e the event to be processed
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int input = e.getKeyCode();

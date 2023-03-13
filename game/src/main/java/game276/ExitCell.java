@@ -11,7 +11,18 @@ import java.io.IOException;
 
 import java.awt.*;
 
+/**
+ * this class represents an object that
+ * allows player to wins when it is touched with
+ * player and all regular rewards are collected
+ */
 public class ExitCell extends StageGameObject {
+    /**
+     * Construct
+     * @param gp game panel that the exit will be placed
+     * @param x x coordinate for exit on the game
+     * @param y y coordinate for exit on the game
+     */
     public ExitCell(GamePanel gp, int x, int y) {
         this.gp = gp;
         this.x = x;
@@ -24,6 +35,11 @@ public class ExitCell extends StageGameObject {
 
     }
 
+    /**
+     * this method checks winning condition of Movable Character
+     * and end the game if all conditions meet
+     * @param mc character that collide with this object
+     */
     public void reactToCollision(MovableCharacter mc) {
         // TODO - change the point checker as much as cheese you will make to end the game after collecting all the cheese
         // TODO - Need to change gameOver condition (bonusRewards also count)

@@ -1,7 +1,13 @@
 package game276;
 import javax.swing.JFrame;
 
+/**
+ * display a game window on the screen
+ */
 public class GameWindow {
+    /**
+     * setting up game window and run the game panel
+     */
     public void runGame() {
         JFrame gameWindow = new JFrame();
 
