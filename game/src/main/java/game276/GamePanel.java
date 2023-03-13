@@ -134,8 +134,10 @@ public class GamePanel extends JPanel implements Runnable {
 
         g.dispose();// Free resources related to g2D
  */
-
+        
         super.paintComponent(g);
+
+        // TODO - Draw exitCell First
         player.repaint(g);
         for (int i = 0; i < allObjectLst.size(); i++) {
             allObjectLst.get(i).repaint(g);
