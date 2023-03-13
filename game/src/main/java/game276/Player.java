@@ -1,13 +1,5 @@
 package game276;
-
 import java.awt.*;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import java.io.File;
-
-import java.io.File;
-
 /**
  * represents object that is controled by player
  *

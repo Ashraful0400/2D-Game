@@ -3,11 +3,7 @@ package game276;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-// import javax.imageio.BufferedImage;
 import java.awt.image.BufferedImage;
-import javax.swing.JLabel;
-import javafx.scene.image.Image;
-
 import java.awt.*;
 
 /**

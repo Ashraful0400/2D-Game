@@ -12,7 +12,7 @@ public class App
      * runs the functions relate to a 2d game
      * @param args syntax, shouldn't affect the program
      */
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         GameWindow tmp = new GameWindow();
         tmp.runGame();
         System.out.println( "Hello World!" );

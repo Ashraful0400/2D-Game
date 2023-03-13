@@ -4,7 +4,6 @@ package game276;
 import game276.GamePanel;
 import game276.MovableCharacter;
 import game276.StageGameObject;
-import game276.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -27,12 +26,10 @@ public class ExitCell extends StageGameObject {
         this.gp = gp;
         this.x = x;
         this.y = y;
-       
         hitboxLength = 10;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/door/doorClose.png";
         getImage();
-
     }
 
     /**

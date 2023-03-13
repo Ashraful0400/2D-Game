@@ -1,8 +1,5 @@
 package game276;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * represents an object that can decrease the points
