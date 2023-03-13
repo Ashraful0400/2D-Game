@@ -28,6 +28,10 @@ public class GamePanel extends JPanel implements Runnable {
     public int maxScrnRowNum = 20;
     public int points;
 
+    public int endGameOP = 0;
+
+    public boolean didWinGame = false;
+
     int scrnWidth = maxScrnColNum * tileSize; // 1536 pixels
     int scrnHeight = maxScrnRowNum * tileSize; // 960 pixels
 
@@ -95,9 +99,11 @@ public class GamePanel extends JPanel implements Runnable {
         Double drawInterval = 1000000000.0 / fps;
         Double nextDrawTime = System.nanoTime() + drawInterval; // Calculate what time next frame should get drawn
 
-        while (gThread != null && !isGameOver) {
+        while (gThread != null) {
             System.out.println("YOOOOLOOOOOOOOOOOOOOO");
-            update();
+            if(!isGameOver) {
+                update();
+            }
 
             // Wait for redrawing (for 60 FPS)
             Double remainingTime = nextDrawTime - System.nanoTime(); // Remaining time after update()
@@ -114,6 +120,35 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (points < 0) {
                 isGameOver = true;
+            }
+
+            if(isGameOver) {
+                if (player.keyboardInput.upKeyPressed) {
+                    endGameOP = 0;
+                } else if (player.keyboardInput.downKeyPressed) {
+                    endGameOP = 1;
+                } else if (player.keyboardInput.EnterPressed) {
+                    switch (endGameOP) {
+                        case 0:
+                            player.x = 100;
+                            player.y = 100;
+                            points = 0;
+                            endGameOP = 0;
+                            ui.playTime = 0;
+                            while(!movEnemyLst.isEmpty()){
+                                movEnemyLst.remove(0);
+                            }
+                            while(!allObjectLst.isEmpty()){
+                                allObjectLst.remove(0);
+                            }
+                            setUpGame();
+                            isGameOver = false;
+                            break;
+                        case 1:
+                            System.exit(0);
+                            break;
+                    }
+                }
             }
 
 
@@ -174,7 +209,9 @@ public class GamePanel extends JPanel implements Runnable {
             allObjectLst.get(i).repaint(g);
         }
         Graphics2D g2 = (Graphics2D)g;
-        ui.draw(g2);
+        if(!isGameOver) {
+            ui.draw(g2);
+        }
         
         if (isGameOver) {
             announceGameOver(g);
@@ -236,6 +273,9 @@ public class GamePanel extends JPanel implements Runnable {
         x = (this.scrnWidth - width)/2;
         y += 100;
         g2D.drawString(text,x,y);
+        if(endGameOP == 0){
+            g2D.drawString("*",x-30,y);
+        }
 
         text = "Quit";
         g2D.setColor(Color.white);
@@ -246,6 +286,9 @@ public class GamePanel extends JPanel implements Runnable {
         x = (this.scrnWidth - width)/2;
         y += 50;
         g2D.drawString(text,x,y);
+        if(endGameOP == 1){
+            g2D.drawString("*",x-30,y);
+        }
 
     }
 

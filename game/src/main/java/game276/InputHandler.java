@@ -8,12 +8,14 @@ import java.awt.event.KeyListener;
  */
 public class InputHandler implements KeyListener {
     /**
-     * kays that handler cares able
+     * keys that handler cares about
      */
     public boolean upKeyPressed;
     public boolean downKeyPressed;
     public boolean leftKeyPressed;
     public boolean rightKeyPressed;
+
+    public boolean EnterPressed;
 
     /**
      * react to key that typed
@@ -44,6 +46,8 @@ public class InputHandler implements KeyListener {
             downKeyPressed = true;
         } else if (input == KeyEvent.VK_D) {
             rightKeyPressed = true;
+        } else if (input == KeyEvent.VK_ENTER){
+            EnterPressed = true;
         }
     }
 
@@ -64,6 +68,8 @@ public class InputHandler implements KeyListener {
             downKeyPressed = false;
         } else if (input == KeyEvent.VK_D) {
             rightKeyPressed = false;
+        } else if (input == KeyEvent.VK_ENTER){
+            EnterPressed = false;
         }
     }
 
