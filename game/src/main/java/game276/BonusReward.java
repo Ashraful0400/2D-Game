@@ -17,7 +17,7 @@ public class BonusReward extends Reward{
     public BonusReward(GamePanel gp, int x, int y){
         super(gp, x, y);
         this._amountToAdjust = 5;
-        hitboxLength = gp.tileSize;
+        hitboxLength = 19;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/cheese/bigCheese.png";
         getImage();

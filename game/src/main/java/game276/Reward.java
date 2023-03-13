@@ -16,7 +16,7 @@ public class Reward extends PointAdjuster{
     public Reward(GamePanel gp, int x, int y){
         super(gp, x, y);
         this._amountToAdjust = 3;
-        hitboxLength = gp.tileSize;
+        hitboxLength = 14;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/cheese/cheese.png";
         getImage();

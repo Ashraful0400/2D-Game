@@ -14,7 +14,7 @@ public class StationaryEnemy extends PointAdjuster {
     public StationaryEnemy(GamePanel gp, int x, int y){
         super(gp, x, y);
         this._amountToAdjust = -3;
-        hitboxLength = gp.tileSize;
+        hitboxLength = 20;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/mouseTrap/mouseTrap.png";
         getImage();

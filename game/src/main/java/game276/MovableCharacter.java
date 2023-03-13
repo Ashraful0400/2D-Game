@@ -26,7 +26,7 @@ public abstract class MovableCharacter extends StageGameObject {
         this.gp = gp;
         this.x = startingX;
         this.y = startingY;
-        hitboxLength = gp.tileSize;
+        hitboxLength = 19;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
     }
 
