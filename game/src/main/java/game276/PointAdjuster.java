@@ -34,7 +34,6 @@ public abstract class PointAdjuster extends StageGameObject{
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
 
         this._amountToAdjust = -1;// -1: amount not assign
-
     }
 
     /**
