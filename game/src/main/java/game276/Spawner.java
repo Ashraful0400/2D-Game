@@ -24,21 +24,62 @@ public class Spawner {
         generateRewards();
         generateBarriers();
         generateExitDoor();
+        generateRewardsBonus();
+        generateFloors();
+    }
+    /**
+     * Create barrier, call constructor of Barrier
+     */
+    private void generateFloors() {
+        createFloorsAt(10,10);
     }
 
+
+
+    /**
+     * Create barrier at (x,y)
+     * @param x position of floor
+     * @param y position of floor
+     */
+    private void createFloorsAt(int x, int y) {
+    Floor newM = new Floor(gp, x, y);
+        gp.allObjectLst.add(newM);
+
+    }
     /**
      * Create exit, call constructor of ExitCell
      */
     public void generateExitDoor() {
-        gp.allObjectLst.add(new ExitCell(gp, 1400, 750));
+        gp.allObjectLst.add(new ExitCell(gp, 1350, 750));
     }
 
     /**
      * Create barrier, call constructor of Barrier
      */
     private void generateBarriers() {
-        createBarrierAt(150, 150);
+    for(int i = -25; i < 1400 ; i++) {
+        i += 50;
+        createBarrierAt(i, -25);
     }
+
+        for(int i = -25; i < 800 ; i++)
+        {
+            i += 50;
+            createBarrierAt(-25, i);
+        }
+        for(int i = -25; i < 1400 ; i++)
+        {
+            i += 50;
+            createBarrierAt(i, 800);
+        }
+        for(int i = -25; i < 800 ; i++)
+        {
+            i += 50;
+            createBarrierAt(1400, i);
+        }
+}
+
+
 
     /**
      * Create barrier at (x,y)
@@ -55,7 +96,12 @@ public class Spawner {
      * Create rewards
      */
     private void generateRewards() {
+      //  for(int i = 0; i < 7; i++)
         createRewardAt(400, 400);
+        createRewardAt(555, 666);
+        createRewardAt(30, 200);
+        createRewardAt(700, 123);
+        createRewardAt(400, 442);
     }
 
     /**
@@ -68,10 +114,33 @@ public class Spawner {
     }
 
     /**
+     * Create  bonus rewards
+     */
+    public void generateRewardsBonus() {
+        //  for(int i = 0; i < 7; i++)
+        createRewardBonusAt(40, 400);
+        createRewardBonusAt(5, 666);
+        createRewardBonusAt(31, 200);
+        createRewardBonusAt(01, 123);
+        createRewardBonusAt(01, 442);
+    }
+
+    /** Create a reward at position (x,y)
+     * @param x position of bonus reward
+     * @param y position of bonus reward
+     */
+
+    private void createRewardBonusAt(int x, int y) {
+        gp.allObjectLst.add(new BonusReward(gp, x, y));
+    }
+    /**
      * Create enemies
      */
     private void generateMovableEnemies() {
         createMovableEnemyAt(100, 400);
+        createMovableEnemyAt(500, 600);
+        createMovableEnemyAt(100, 750);
+
     }
 
     /**
