@@ -16,9 +16,8 @@ public class Spawner {
     }
 
     /**
-     * create all objects exclude player
+     * Create all objects except player
      */
-    // Generate all entities EXCEPT player
     public void generateAllEntitiesExceptPlayer() {
         //generateExitDoor(); // gp's allObjectLst[0] == always exitDoor
         generateMovableEnemies();
@@ -28,21 +27,21 @@ public class Spawner {
     }
 
     /**
-     * create exit, call constructor of ExitCell
+     * Create exit, call constructor of ExitCell
      */
     public void generateExitDoor() {
         gp.allObjectLst.add(new ExitCell(gp, 1400, 750));
     }
 
     /**
-     * create barrier, call constructor of Barrier
+     * Create barrier, call constructor of Barrier
      */
     private void generateBarriers() {
         createBarrierAt(150, 150);
     }
 
     /**
-     * create barrier at (x,y)
+     * Create barrier at (x,y)
      * @param x position of barrier
      * @param y position of barrier
      */
@@ -53,14 +52,14 @@ public class Spawner {
     }
 
     /**
-     * create rewards
+     * Create rewards
      */
     private void generateRewards() {
         createRewardAt(400, 400);
     }
 
     /**
-     * create reward at position (x,y)
+     * Create a reward at position (x,y)
      * @param x position of reward
      * @param y position of reward
      */
@@ -69,14 +68,14 @@ public class Spawner {
     }
 
     /**
-     * create enemies
+     * Create enemies
      */
     private void generateMovableEnemies() {
         createMovableEnemyAt(100, 400);
     }
 
     /**
-     * create enemy at position (x,y)
+     * Create a Movable Enemy at position (x,y)
      * @param x position of enemy
      * @param y position of enemy
      */

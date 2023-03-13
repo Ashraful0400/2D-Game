@@ -29,14 +29,12 @@ public class Player extends MovableCharacter {
         imagePath = "Images/mouse/mouseForward.png";
         this.speed = 5;
         this.getImage();
-
     }
 
     /**
-     * move main character base on player input
+     * move main character based on player input
      */
     public void move() {
-
         prevX = x;
         prevY = y;
         
@@ -49,8 +47,6 @@ public class Player extends MovableCharacter {
         } else if (keyboardInput.rightKeyPressed) {
             moveRight();
         }
-        CollisionOn = false;
-        //gp.cChecker.processObjectCollision(this);
         resetHitboxPos();
     }
 
@@ -103,10 +99,15 @@ public class Player extends MovableCharacter {
         if (gp.isGameOver) {
             imagePath = "Images/mouse/mouseDie.png";
             getImage();
+        } else if (gp.didWinGame) { // Mouse hold cheese when he wins
+            if (imagePath == "Images/mouse/mouseLeft.png" || imagePath == "Images/mouse/mouseLeft2.png") {
+                imagePath = "Images/mouse/CheeseLeft";
+            } else if (imagePath == "Images/mouse/mouseRight.png" || imagePath == "Images/mouse/mouseRight2.png") {
+                imagePath = "Images/mouse/CheeseRight";
+            }
         }
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(sprite,x,y,gp.tileSize, gp.tileSize, null);
     }
 
 }
-//whereever you use update neeed to change from video 6 at 10:15 from ashraf (gp.checker) and also update at min 21
