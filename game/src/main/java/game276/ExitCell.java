@@ -46,6 +46,7 @@ public class ExitCell extends StageGameObject {
             imagePath = "Images/door/doorOpen.png";
             getImage();
             gp.didWinGame = true;
+            gp.isGameOver = true;
         }
     }
 }
