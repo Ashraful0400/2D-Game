@@ -35,9 +35,8 @@ public class Spawner {
         createFloorsAt(00,00);
         createFloorsAt(1375,25);
         for(int i = 00; i < 1400; i++){
-            for(int j = 00; j < 800; j++)
+            for(int j = 00; j < 850; j++)
             {
-                //change 25 to i to make the floor
                 createFloorsAt(i,j);
                 j += 40;
             }
