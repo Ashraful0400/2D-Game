@@ -19,5 +19,4 @@ public class StationaryEnemy extends PointAdjuster {
         imagePath = "Images/mouseTrap/mouseTrap.png";
         getImage();
     }
-
 }

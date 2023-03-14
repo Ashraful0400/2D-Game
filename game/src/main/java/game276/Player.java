@@ -88,14 +88,15 @@ public class Player extends MovableCharacter {
      * @param g graphics for drawing main character
      */
     public void repaint(Graphics g) {
-        if (gp.isGameOver) {
-            imagePath = "Images/mouse/mouseDie.png";
-        } else if (gp.didWinGame) { // Mouse hold cheese when he wins
+        if (gp.didWinGame) { // MUST evaluate didWinGame first due to how StationaryEnemy is set up
+            // Mouse hold cheese when he wins
             if (imagePath == "Images/mouse/mouseLeft.png" || imagePath == "Images/mouse/mouseLeft2.png") {
                 imagePath = "Images/mouse/CheeseLeft";
             } else if (imagePath == "Images/mouse/mouseRight.png" || imagePath == "Images/mouse/mouseRight2.png") {
                 imagePath = "Images/mouse/CheeseRight";
             }
+        } else if (gp.isGameOver) {
+            imagePath = "Images/mouse/mouseDie.png";
         }
         getImage();
         Graphics2D g2D = (Graphics2D) g;
