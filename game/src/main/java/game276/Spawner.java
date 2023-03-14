@@ -134,10 +134,7 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 850);
         }
-        for(int i = 200; i < 500; i++){
-            i += 48;
-            createBarrierAt(i, 5680);
-        }
+
         for(int i = 850; i < 1300; i++){
             i += 48;
             createBarrierAt(i, 850);
@@ -150,9 +147,23 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 800);
         }
+        for(int i = 1300; i <1500 ; i++){
+            i += 48;
+            createBarrierAt(i, 700);
+        }
+
+
         for(int i = 0; i < 200; i++){
             i += 48;
             createBarrierAt(50, i);
+        }
+        for(int i = 600; i < 775; i++){
+            i += 48;
+            createBarrierAt(300, i);
+        }
+        for(int i = 200; i < 775; i++){
+            i += 48;
+            createBarrierAt(1300, i);
         }
 
 }
