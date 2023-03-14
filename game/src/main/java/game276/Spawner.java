@@ -26,6 +26,7 @@ public class Spawner {
         generateRewards();
         generateBarriers();
         generateRewardsBonus();
+        generateStationaryEnemies();
         
     }
     /**
@@ -243,6 +244,7 @@ public class Spawner {
     private void createRewardBonusAt(int x, int y) {
         gp.allObjectLst.add(new BonusReward(gp, x, y));
     }
+
     /**
      * Create enemies
      */
@@ -262,5 +264,26 @@ public class Spawner {
         MovableEnemy newM = new MovableEnemy(gp, x, y);
         gp.allObjectLst.add(newM);
         gp.movEnemyLst.add(newM);
+    }
+
+    /**
+     * Create stationary enemies
+     */
+    private void generateStationaryEnemies() {
+        createStationaryEnemyAt(100, 400);
+        createStationaryEnemyAt(1000, 600);
+        createStationaryEnemyAt(500, 350);
+
+    }
+
+    /**
+     * Create a Stationary Enemy at position (x,y)
+     * @param x position of enemy
+     * @param y position of enemy
+     */
+    private void createStationaryEnemyAt(int x, int y) {
+        StationaryEnemy newM = new StationaryEnemy(gp, x, y);
+        gp.allObjectLst.add(newM);
+       // gp.movEnemyLst.add(newM);
     }
 }
