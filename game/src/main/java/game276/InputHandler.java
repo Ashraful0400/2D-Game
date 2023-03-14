@@ -10,6 +10,7 @@ public class InputHandler implements KeyListener {
     /**
      * keys that handler cares about
      */
+    GamePanel gp;
     public boolean upKeyPressed;
     public boolean downKeyPressed;
     public boolean leftKeyPressed;
@@ -37,6 +38,35 @@ public class InputHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int input = e.getKeyCode();
 
+        //Title menu state
+
+
+       if(gp.gameState == gp.titleState){
+
+            if(input == KeyEvent.VK_W){
+                gp.ui.commandNum--;
+               if(gp.ui.commandNum < 0){
+                   gp.ui.commandNum = 2;
+                }
+            }
+            if(input == KeyEvent.VK_S){
+                gp.ui.commandNum++;
+                if(gp.ui.commandNum >2 ){
+                   gp.ui.commandNum = 0;
+                }
+            }
+            if(input == KeyEvent.VK_ENTER){
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    System.exit(0);
+                }
+
+            }
+        }
+
+
         if (input == KeyEvent.VK_W) {
             System.out.println("W");
             upKeyPressed = true;
@@ -49,6 +79,7 @@ public class InputHandler implements KeyListener {
         } else if (input == KeyEvent.VK_ENTER){
             EnterPressed = true;
         }
+
     }
 
     /**
@@ -71,6 +102,7 @@ public class InputHandler implements KeyListener {
         } else if (input == KeyEvent.VK_ENTER){
             EnterPressed = false;
         }
+
     }
 
     

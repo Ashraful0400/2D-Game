@@ -44,6 +44,10 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
     public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
     public ArrayList<Barrier> barriersLst = new ArrayList<Barrier>();
+//for the menu
+    public int gameState ;
+    public final int titleState = 0;
+    public int playState = 1;
 
 
 
@@ -73,6 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public void setUpGame(){
         spawner.generateAllEntitiesExceptPlayer(); // gp's allObjectLst[0] == always exitDoor
+        gameState = titleState;
     }
 
     /**
@@ -162,7 +167,10 @@ public class GamePanel extends JPanel implements Runnable {
      * and call collision handler when it gets called
      */
     public void update() {
-        player.move();
+        if(gameState == playState){
+            player.move();
+        }
+        // player.move();
         for (int i = 0; i < movEnemyLst.size(); i++) {
             movEnemyLst.get(i).move();
         }
@@ -181,21 +189,30 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        for (int i = 0; i < allObjectLst.size(); i++) {
-            allObjectLst.get(i).repaint(g);
-        }
+
         Graphics2D g2 = (Graphics2D)g;
-        if(!isGameOver) {
+        //Title screen(Menu0 at the beginning
+        if(gameState == titleState ){
             ui.draw(g2);
         }
-        player.repaint(g);
+        else{
+            for (int i = 0; i < allObjectLst.size(); i++) {
+                allObjectLst.get(i).repaint(g);
+                if(!isGameOver) {
+                    ui.draw(g2);
+                }
+                player.repaint(g);
 
-        
-        if (isGameOver) {
-            announceGameOver(g);
+
+                if (isGameOver) {
+                    announceGameOver(g);
+                }
+
+                g.dispose();// Free resources related to g2D
+            }
+
         }
-        
-        g.dispose();// Free resources related to g2D
+
     }
 
     /**
