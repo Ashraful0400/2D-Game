@@ -32,15 +32,15 @@ public class Spawner {
      * Create barrier, call constructor of Barrier
      */
     private void generateFloors() {
-        createFloorsAt(00,00);
+       // createFloorsAt(00,00);
         createFloorsAt(1375,25);
         for(int i = 00; i < 1525; i++){
             for(int j = 00; j < 970; j++)
             {
                 createFloorsAt(i,j);
-                j += 40;
+                j += 48;
             }
-            i += 40;
+            i += 48;
         }
     }
 
@@ -70,26 +70,41 @@ public class Spawner {
        // createBarrierAt(-50, 900);
         //creating barrier at top
     for(int i = -50; i <= 1500 ; i++) {
-        i += 50;
+        i += 48;
         createBarrierAt(i, -50);
         }
         //creating barrier at left
         for(int i = -50; i <= 1000 ; i++)
         {
-            i += 50;
+            i += 48;
             createBarrierAt(-50, i);
         }
         //creating barrier at bottom
         for(int i = -50; i <= 1500 ; i++)
         {
-            i += 50;
+            i += 48;
             createBarrierAt(i, 975);
         }
         //creating barrier at right
         for(int i = -50; i <= 1000; i++)
         {
-            i += 50;
+            i += 48;
             createBarrierAt(1535, i);
+        }
+
+
+        //Now inside the map
+        for(int i = 225; i < 550; i++){
+            i += 48;
+            createBarrierAt(i, 50);
+        }
+        for(int i = 750; i < 1250; i++){
+            i += 48;
+            createBarrierAt(i, 50);
+        }
+        for(int i = 0; i < 200; i++){
+            i += 48;
+            createBarrierAt(40, i);
         }
 
 }
@@ -112,11 +127,16 @@ public class Spawner {
      */
     private void generateRewards() {
       //  for(int i = 0; i < 7; i++)
-        createRewardAt(400, 400);
-        createRewardAt(555, 666);
-        createRewardAt(30, 200);
-        createRewardAt(700, 123);
-        createRewardAt(400, 442);
+        createRewardAt(700, 20);
+        createRewardAt(775, 20);
+        createRewardAt(20, 250);
+        createRewardAt(120, 250);
+        createRewardAt(500, 800);
+        createRewardAt(1000, 110);
+        createRewardAt(900, 350);
+        createRewardAt(270, 850);
+        createRewardAt(1100, 600);
+
     }
 
     /**
@@ -133,11 +153,12 @@ public class Spawner {
      */
     public void generateRewardsBonus() {
         //  for(int i = 0; i < 7; i++)
-        createRewardBonusAt(40, 400);
-        createRewardBonusAt(5, 666);
-        createRewardBonusAt(31, 200);
-        createRewardBonusAt(01, 123);
-        createRewardBonusAt(01, 442);
+        createRewardBonusAt(180, 20);
+        createRewardBonusAt(375, 66);
+        createRewardBonusAt(900, 20);
+        createRewardBonusAt(850, 300);
+        createRewardBonusAt(1001, 850);
+        createRewardBonusAt(900, 442);
     }
 
     /** Create a reward at position (x,y)
@@ -153,8 +174,8 @@ public class Spawner {
      */
     private void generateMovableEnemies() {
         createMovableEnemyAt(100, 400);
-        createMovableEnemyAt(500, 600);
-        createMovableEnemyAt(100, 750);
+        createMovableEnemyAt(1000, 600);
+        createMovableEnemyAt(500, 350);
 
     }
 
