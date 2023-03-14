@@ -103,6 +103,8 @@ public class Spawner {
             createBarrierAt(i, 50);
         }
 
+        createBarrierAt(1285, 0);
+
         for(int i = 750; i < 1250; i++){
             i += 48;
             createBarrierAt(i, 50);
@@ -169,7 +171,7 @@ public class Spawner {
         }
 
     //vertical
-        for(int i = 0; i < 200; i++){
+        for(int i = 0; i < 450; i++){
             i += 48;
             createBarrierAt(50, i);
         }
