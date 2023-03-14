@@ -36,10 +36,10 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         //Change the number to draw in the screen as needed
-        g2.drawString("Points = " + gp.points,25,50);
+        g2.drawString("Points: " + gp.points,25,50);
 
         //Time
         playTime += (double)1/60;
-        g2.drawString("Time:" + dFormat.format(playTime),gp.tileSize*11, 65);
+        g2.drawString("Time: " + dFormat.format(playTime),gp.tileSize*11, 65);
     }
 }
