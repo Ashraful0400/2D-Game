@@ -73,18 +73,21 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, -50);
         }
+
         //creating barrier at left
         for(int i = -50; i <= 1000 ; i++)
         {
             i += 48;
             createBarrierAt(-50, i);
         }
+
         //creating barrier at bottom
         for(int i = -50; i <= 1500 ; i++)
         {
             i += 48;
             createBarrierAt(i, 975);
         }
+
         //creating barrier at right
         for(int i = -50; i <= 1000; i++)
         {
@@ -98,38 +101,47 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 50);
         }
+
         for(int i = 750; i < 1250; i++){
             i += 48;
             createBarrierAt(i, 50);
         }
-        for(int i = 500; i < 1250; i++){
+
+        for(int i = 500; i < 1300; i++){
             i += 48;
             createBarrierAt(i, 200);
         }
+
         for(int i = 150; i < 375; i++){
             i += 48;
             createBarrierAt(i, 200);
         }
+
         for(int i = 275; i < 600; i++){
             i += 48;
             createBarrierAt(i, 300);
         }
+
         for(int i = 600; i < 999; i++){
             i += 48;
             createBarrierAt(i, 675);
         }
+
         for(int i = 600; i < 999; i++){
             i += 48;
             createBarrierAt(i, 450);
         }
+
         for(int i = 210; i < 625; i++){
             i += 48;
             createBarrierAt(i, 400);
         }
+
         for(int i = 500; i < 670; i++){
             i += 48;
             createBarrierAt(i, 850);
         }
+
         for(int i = 850; i < 1300; i++){
             i += 48;
             createBarrierAt(i, 850);
@@ -139,20 +151,23 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 850);
         }
+
         for(int i = -50; i < 300; i++){
             i += 48;
             createBarrierAt(i, 600);
         }
+
         for(int i = 300; i < 520; i++){
             i += 48;
             createBarrierAt(i, 800);
         }
-        for(int i = 1300; i <1500 ; i++){
+
+        for(int i = 1450; i <1500 ; i++){
             i += 48;
             createBarrierAt(i, 700);
         }
 
-
+    //vertical
         for(int i = 0; i < 200; i++){
             i += 48;
             createBarrierAt(50, i);
@@ -163,7 +178,7 @@ public class Spawner {
         }
         for(int i = 200; i < 775; i++){
             i += 48;
-            createBarrierAt(1300, i);
+            createBarrierAt(1370, i);
         }
 
 }
@@ -186,9 +201,9 @@ public class Spawner {
      */
     private void generateRewards() {
       //  for(int i = 0; i < 7; i++)
-        createRewardAt(700, 20);
-        createRewardAt(775, 20);
-        createRewardAt(20, 250);
+        createRewardAt(700, 0);
+        createRewardAt(775, 00);
+        createRewardAt(0, 250);
         createRewardAt(120, 250);
         createRewardAt(500, 800);
         createRewardAt(1000, 110);
@@ -212,12 +227,12 @@ public class Spawner {
      */
     public void generateRewardsBonus() {
         //  for(int i = 0; i < 7; i++)
-        createRewardBonusAt(180, 20);
-        createRewardBonusAt(375, 66);
-        createRewardBonusAt(900, 20);
+        createRewardBonusAt(180, 10);
+        createRewardBonusAt(375, 86);
+        createRewardBonusAt(900, 00);
         createRewardBonusAt(850, 300);
-        createRewardBonusAt(1001, 850);
-        createRewardBonusAt(900, 442);
+        createRewardBonusAt(1001, 900);
+        createRewardBonusAt(900, 492);
     }
 
     /** Create a reward at position (x,y)
