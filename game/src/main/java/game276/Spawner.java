@@ -139,7 +139,7 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 850);
         }
-        for(int i = 120; i < 300; i++){
+        for(int i = -50; i < 300; i++){
             i += 48;
             createBarrierAt(i, 600);
         }
