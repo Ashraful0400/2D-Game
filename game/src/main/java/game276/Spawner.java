@@ -69,9 +69,9 @@ public class Spawner {
     private void generateBarriers() {
        // createBarrierAt(-50, 900);
         //creating barrier at top
-    for(int i = -50; i <= 1500 ; i++) {
-        i += 48;
-        createBarrierAt(i, -50);
+        for(int i = -50; i <= 1500 ; i++) {
+            i += 48;
+            createBarrierAt(i, -50);
         }
         //creating barrier at left
         for(int i = -50; i <= 1000 ; i++)
@@ -102,9 +102,57 @@ public class Spawner {
             i += 48;
             createBarrierAt(i, 50);
         }
+        for(int i = 500; i < 1250; i++){
+            i += 48;
+            createBarrierAt(i, 200);
+        }
+        for(int i = 150; i < 375; i++){
+            i += 48;
+            createBarrierAt(i, 200);
+        }
+        for(int i = 275; i < 600; i++){
+            i += 48;
+            createBarrierAt(i, 300);
+        }
+        for(int i = 600; i < 999; i++){
+            i += 48;
+            createBarrierAt(i, 675);
+        }
+        for(int i = 600; i < 999; i++){
+            i += 48;
+            createBarrierAt(i, 450);
+        }
+        for(int i = 210; i < 625; i++){
+            i += 48;
+            createBarrierAt(i, 400);
+        }
+        for(int i = 500; i < 670; i++){
+            i += 48;
+            createBarrierAt(i, 850);
+        }
+        for(int i = 850; i < 1300; i++){
+            i += 48;
+            createBarrierAt(i, 850);
+        }
+        for(int i = 200; i < 500; i++){
+            i += 48;
+            createBarrierAt(i, 5680);
+        }
+        for(int i = 850; i < 1300; i++){
+            i += 48;
+            createBarrierAt(i, 850);
+        }
+        for(int i = 120; i < 300; i++){
+            i += 48;
+            createBarrierAt(i, 600);
+        }
+        for(int i = 300; i < 520; i++){
+            i += 48;
+            createBarrierAt(i, 800);
+        }
         for(int i = 0; i < 200; i++){
             i += 48;
-            createBarrierAt(40, i);
+            createBarrierAt(50, i);
         }
 
 }
