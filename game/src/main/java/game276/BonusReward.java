@@ -6,7 +6,7 @@ import java.awt.*;
  * This class represents an object
  * that adds more points on overall score
  */
-public class BonusReward extends Reward{
+public class BonusReward extends PointAdjuster {
 
     /**
      * Constructor

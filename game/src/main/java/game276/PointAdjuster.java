@@ -64,7 +64,4 @@ public abstract class PointAdjuster extends StageGameObject{
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(sprite, x,y,gp.tileSize,gp.tileSize,null);
     }
-
-    
-
 }

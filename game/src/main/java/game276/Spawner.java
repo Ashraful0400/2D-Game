@@ -6,12 +6,14 @@ package game276;
 public class Spawner {
 
     private GamePanel gp;
+    public int ordinaryRewardNum;
 
     /**
      * Constructor
      * @param gp game panel that spawner going to create object
      */
     Spawner(GamePanel gp) {
+        ordinaryRewardNum = 0;
         this.gp = gp;
     }
 
@@ -206,13 +208,13 @@ public class Spawner {
       //  for(int i = 0; i < 7; i++)
         createRewardAt(700, 0);
         createRewardAt(775, 00);
-        createRewardAt(0, 250);
-        createRewardAt(120, 250);
-        createRewardAt(500, 800);
-        createRewardAt(1000, 110);
-        createRewardAt(900, 350);
-        createRewardAt(270, 850);
-        createRewardAt(1100, 600);
+        //createRewardAt(0, 250);
+        //createRewardAt(120, 250);
+        //createRewardAt(500, 800);
+        //createRewardAt(1000, 110);
+        //createRewardAt(900, 350);
+        //createRewardAt(270, 850);
+        //createRewardAt(1100, 600);
 
     }
 
@@ -222,6 +224,7 @@ public class Spawner {
      * @param y position of reward
      */
     private void createRewardAt(int x, int y) {
+        ordinaryRewardNum++;
         gp.allObjectLst.add(new Reward(gp, x, y));
     }
 

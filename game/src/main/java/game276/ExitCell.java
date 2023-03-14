@@ -26,7 +26,7 @@ public class ExitCell extends StageGameObject {
         this.gp = gp;
         this.x = x;
         this.y = y;
-        hitboxLength = 10;
+        hitboxLength = 20;
         hitBox = new Rectangle(x,y, hitboxLength, hitboxLength);
         imagePath = "Images/door/doorClose.png";
         getImage();
@@ -42,7 +42,7 @@ public class ExitCell extends StageGameObject {
         // TODO - Need to change gameOver condition (bonusRewards also count)
 
         // TODO - Need to change so it WINS the game
-        if (mc == gp.player && gp.points >= 3) {
+        if (mc == gp.player && gp.spawner.ordinaryRewardNum == 0) {
             imagePath = "Images/door/doorOpen.png";
             getImage();
             gp.didWinGame = true;

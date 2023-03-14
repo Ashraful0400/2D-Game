@@ -22,4 +22,12 @@ public class Reward extends PointAdjuster{
         getImage();
     }
 
+    //            gp.spawner.ordinaryRewardNum--;
+
+    public void reactToCollision(MovableCharacter mc) {
+        super.reactToCollision(mc);
+        gp.spawner.ordinaryRewardNum--;
+    }
+
+
 }
