@@ -40,18 +40,18 @@ public class InputHandler implements KeyListener {
 
         //Title menu state
 
-
+/**
        if(gp.gameState == gp.titleState){
 
             if(input == KeyEvent.VK_W){
                 gp.ui.commandNum--;
                if(gp.ui.commandNum < 0){
-                   gp.ui.commandNum = 2;
+                   gp.ui.commandNum = 1;
                 }
             }
             if(input == KeyEvent.VK_S){
                 gp.ui.commandNum++;
-                if(gp.ui.commandNum >2 ){
+                if(gp.ui.commandNum >1 ){
                    gp.ui.commandNum = 0;
                 }
             }
@@ -64,7 +64,7 @@ public class InputHandler implements KeyListener {
                 }
 
             }
-        }
+        }*/
 
 
         if (input == KeyEvent.VK_W) {

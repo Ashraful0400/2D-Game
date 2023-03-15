@@ -17,39 +17,41 @@ public class UI {
     Font arial_40;
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
-   // BufferedImage cheeseImage;//if we use cheese image on screen
+    // BufferedImage cheeseImage;//if we use cheese image on screen
     public int commandNum = 0;
 
     /**
      * Constructor
+     *
      * @param gp game panel that need to display time and points
      */
-    public UI(GamePanel gp){
+    public UI(GamePanel gp) {
         this.gp = gp;
-        arial_40 =  new Font("Arial",Font.PLAIN,40);
+        arial_40 = new Font("Arial", Font.PLAIN, 40);
     }
 
     /**
      * drawing time and points on the game window
+     *
      * @param g2 2d graphics for drawing
      */
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
         this.g2 = g2;
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         //Change the number to draw in the screen as needed
-        g2.drawString("Points: " + gp.points,25,50);
+        g2.drawString("Points: " + gp.points, 25, 50);
         //titleScreen
-        if(gp.gameState == gp.titleState){
-            drawTitleScreen();
-        }
-        if(gp.playState == gp.gameState){
- 
+        //if(gp.gameState == gp.titleState){
+        // drawTitleScreen();
+        //   }
+        if (gp.playState == gp.gameState) {
+
         }
 
         // Time
-        playTime += (double)1/60;
-        g2.drawString("Time: " + dFormat.format(playTime),gp.tileSize*11, 65);
+        playTime += (double) 1 / 60;
+        g2.drawString("Time: " + dFormat.format(playTime), gp.tileSize * 11, 65);
 
 
         // Draw cheese left
@@ -57,11 +59,12 @@ public class UI {
         FontMetrics fm = g2.getFontMetrics(g2.getFont());
         String text = "Cheese Left: " + gp.spawner.ordinaryRewardNum;
         int width = fm.stringWidth(text);
-        g2.drawString(text, (gp.scrnWidth - width)/4 * 3, 50);
+        g2.drawString(text, (gp.scrnWidth - width) / 4 * 3, 50);
     }
+}
 
 
-    public void drawTitleScreen(){
+   /** public void drawTitleScreen(){
         g2.setColor(new Color(10,10,10));
         g2.fillRect(0,0,gp.scrnWidth,gp.scrnHeight);
 
@@ -99,4 +102,4 @@ public class UI {
         int x = gp.scrnWidth/2 - length/2;
         return x;
     }
-}
+}*/

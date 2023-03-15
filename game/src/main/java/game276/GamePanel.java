@@ -72,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public void setUpGame(){
         spawner.generateAllEntitiesExceptPlayer();
-        gameState = titleState;
+        //gameState = titleState;
     }
 
     /**
@@ -173,9 +173,9 @@ public class GamePanel extends JPanel implements Runnable {
      * and call collision handler when it gets called
      */
     public void update() {
-        if (gameState == playState) {
+        //if (gameState == playState) {
             player.move();
-        }
+       // }
         // player.move();
         for (int i = 0; i < movEnemyLst.size(); i++) {
             movEnemyLst.get(i).move();
@@ -198,9 +198,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D)g;
         // Title screen/Menu at the beginning
-        if (gameState == titleState){
+       // if (gameState == titleState){
             ui.draw(g2);
-        } else {
+       // } else {
             for (int i = 0; i < allObjectLst.size(); i++) {
                 allObjectLst.get(i).repaint(g); 
             }
@@ -216,7 +216,7 @@ public class GamePanel extends JPanel implements Runnable {
             if (isGameOver) {
                 announceGameOver(g);
             }
-        }
+       // }
 
         g.dispose();// Free resources related to g2D
 
