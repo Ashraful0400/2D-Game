@@ -124,40 +124,50 @@ public class GamePanel extends JPanel implements Runnable {
 
             // Menu for game ending
             if (isGameOver) { 
-                if (player.keyboardInput.upKeyPressed) {
-                    endGameOP = 0;
-                } else if (player.keyboardInput.downKeyPressed) {
-                    endGameOP = 1;
-                } else if (player.keyboardInput.EnterPressed) {
-                    switch (endGameOP) {
-                        case 0:
-                            player.x = 100;
-                            player.y = 100;
-                            player.imagePath = "Images/mouse/mouseForward.png";
-                            player.getImage();
-                            points = 0;
-                            endGameOP = 0;
-                            ui.playTime = 0;
-                            while(!movEnemyLst.isEmpty()){
-                                movEnemyLst.remove(0);
-                            }
-                            while(!allObjectLst.isEmpty()){
-                                allObjectLst.remove(0);
-                            }
-                            setUpGame();
-                            isGameOver = false;
-                            didWinGame = false;
-                            break;
-                        case 1:
-                            System.exit(0);
-                            break;
-                    }
-                }
+                displayEndGameMenu();
             }
 
             repaint();
 
         }
+    }
+
+    /**
+     * Shows the menu to either retry or quit the game;
+     * Must be called inside run()'s while loop
+     * to receive player input
+     */
+    public void displayEndGameMenu() {
+        if (player.keyboardInput.upKeyPressed) {
+            endGameOP = 0;
+        } else if (player.keyboardInput.downKeyPressed) {
+            endGameOP = 1;
+        } else if (player.keyboardInput.EnterPressed) {
+            switch (endGameOP) {
+                case 0:
+                    player.x = 100;
+                    player.y = 100;
+                    player.imagePath = "Images/mouse/mouseForward.png";
+                    player.getImage();
+                    points = 0;
+                    endGameOP = 0;
+                    ui.playTime = 0;
+                    while(!movEnemyLst.isEmpty()){
+                        movEnemyLst.remove(0);
+                    }
+                    while(!allObjectLst.isEmpty()){
+                        allObjectLst.remove(0);
+                    }
+                    setUpGame();
+                    isGameOver = false;
+                    didWinGame = false;
+                    break;
+                case 1:
+                    System.exit(0);
+                    break;
+            }
+        }
+        return;
     }
 
     /**
