@@ -169,7 +169,7 @@ public class MovableEnemy extends MovableCharacter {
      */
     public void reactToCollision(MovableCharacter mc) {
         if (mc == player) {
-            gp.isGameOver = true;
+            gp.gameState = gp.gameOverState;
         }
     }
 }

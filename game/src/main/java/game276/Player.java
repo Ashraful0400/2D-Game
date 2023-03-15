@@ -8,7 +8,7 @@ public class Player extends MovableCharacter {
     /**
      * handler for player input
      */
-    public InputHandler keyboardInput = new InputHandler();
+    public InputHandler keyboardInput;
 
     /**
      * Constructor
@@ -18,6 +18,7 @@ public class Player extends MovableCharacter {
      */
     public Player(GamePanel gp, int startingX, int startingY) {
         super(gp, startingX, startingY);
+        this.keyboardInput = gp.keyboardHandler;
         imagePath = "Images/mouse/mouseForward.png";
         this.speed = 5;
         this.getImage();
@@ -95,7 +96,7 @@ public class Player extends MovableCharacter {
             } else if (imagePath == "Images/mouse/mouseRight.png" || imagePath == "Images/mouse/mouseRight2.png") {
                 imagePath = "Images/mouse/CheeseRight";
             }
-        } else if (gp.isGameOver) {
+        } else if (gp.gameState == gp.gameOverState) {
             imagePath = "Images/mouse/mouseDie.png";
         }
         getImage();

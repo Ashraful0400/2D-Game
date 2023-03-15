@@ -29,7 +29,7 @@ public abstract class StageGameObject {
      */
     public void getImage() {
         try {
-            //sprite = ImageIO.read(new File(this.imagePath)); // works only on some computers
+            //sprite = ImageIO.read(new File(imagePath)); // works only on some computers
             sprite = ImageIO.read(this.getClass().getResource(imagePath));
         } catch (Exception e) {
             e.printStackTrace();

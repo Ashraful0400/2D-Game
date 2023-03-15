@@ -5,7 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -32,9 +33,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int points;
 
-    public int endGameOP = 0;
-    public boolean isGameOver; // gets toggled true no matter player loses or wins
-    public boolean didWinGame; 
+    public boolean didWinGame;
+
+    public InputHandler keyboardHandler = new InputHandler();
 
     public Player player = new Player(this, 100, 100);
     public Spawner spawner = new Spawner(this);
@@ -42,13 +43,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public ArrayList<StageGameObject> allObjectLst = new ArrayList<StageGameObject>();
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
-    public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
     public ArrayList<Barrier> barriersLst = new ArrayList<Barrier>();
 
     //for the menu
-    public int gameState ;
+    public int gameState;
     public final int titleState = 0;
     public int playState = 1;
+
+    public int gameOverState = 2;
 
     public UI ui = new UI(this);
 
@@ -59,8 +61,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(scrnWidth, scrnHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true); // Improves game rendering performance
-        this.addKeyListener(player.keyboardInput);
+        this.addKeyListener(keyboardHandler);
         this.setFocusable(true);
+        gameState = titleState;
         points = 0;
 
     }
@@ -79,7 +82,6 @@ public class GamePanel extends JPanel implements Runnable {
      * this method crates thread that runs the game
      */
     public void startThread() {
-        isGameOver = false;
         didWinGame = false;
         gThread = new Thread(this);
         gThread.start();
@@ -99,7 +101,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         while (gThread != null) {
             System.out.println("YOOOOLOOOOOOOOOOOOOOO");
-            if(!isGameOver) {
+            if(gameState == playState) {
                 update();
             }
 
@@ -116,12 +118,16 @@ public class GamePanel extends JPanel implements Runnable {
                 e.printStackTrace();
             }
 
+            if(gameState == titleState){
+                controlTitleMenu();
+            }
+
             if (points < 0) {
-                isGameOver = true;
+                gameState = gameOverState;
             }
 
             // Menu for game ending
-            if (isGameOver) { 
+            if (gameState == gameOverState) {
                 controlEndGameMenu();
             }
 
@@ -136,19 +142,18 @@ public class GamePanel extends JPanel implements Runnable {
      * to receive player input
      */
     public void controlEndGameMenu() { // TODO - Test
-        if (player.keyboardInput.upKeyPressed) {
-            endGameOP = 0;
-        } else if (player.keyboardInput.downKeyPressed) {
-            endGameOP = 1;
-        } else if (player.keyboardInput.EnterPressed) {
-            switch (endGameOP) {
+        if (keyboardHandler.upKeyPressed) {
+            ui.commandNum = 0;
+        } else if (keyboardHandler.downKeyPressed) {
+            ui.commandNum = 1;
+        } else if (keyboardHandler.EnterPressed) {
+            switch (ui.commandNum) {
                 case 0:
                     player.x = 100;
                     player.y = 100;
                     player.imagePath = "Images/mouse/mouseForward.png";
                     player.getImage();
                     points = 0;
-                    endGameOP = 0;
                     ui.playTime = 0;
                     while(!movEnemyLst.isEmpty()){
                         movEnemyLst.remove(0);
@@ -157,7 +162,7 @@ public class GamePanel extends JPanel implements Runnable {
                         allObjectLst.remove(0);
                     }
                     setUpGame();
-                    isGameOver = false;
+                    gameState = playState;
                     didWinGame = false;
                     break;
                 case 1:
@@ -166,6 +171,31 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         return;
+    }
+
+    public void controlTitleMenu(){
+        if (keyboardHandler.upKeyPressed) {
+            ui.commandNum = 0;
+        } else if (keyboardHandler.downKeyPressed) {
+            ui.commandNum = 1;
+        } else if (keyboardHandler.EnterPressed) {
+            switch (ui.commandNum) {
+                case 0:
+                    while(!movEnemyLst.isEmpty()){
+                        movEnemyLst.remove(0);
+                    }
+                    while(!allObjectLst.isEmpty()){
+                        allObjectLst.remove(0);
+                    }
+                    setUpGame();
+                    gameState = playState;
+                    didWinGame = false;;
+                    break;
+                case 1:
+                    System.exit(0);
+                    break;
+            }
+        }
     }
 
     /**
@@ -193,111 +223,21 @@ public class GamePanel extends JPanel implements Runnable {
      * @param g the <code>Graphics</code> object to protect
      */
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
 
-        Graphics2D g2 = (Graphics2D)g;
-        // Title screen/Menu at the beginning
-       // if (gameState == titleState){
-            ui.draw(g2);
-       // } else {
+        Graphics2D g2 = (Graphics2D) g;
+
+
+        if (gameState == playState) {
             for (int i = 0; i < allObjectLst.size(); i++) {
-                allObjectLst.get(i).repaint(g); 
+                allObjectLst.get(i).repaint(g);
             }
-
-            
             player.repaint(g);
+        }
 
-
-            if(!isGameOver) {
-                ui.draw(g2);
-            }
-
-            if (isGameOver) {
-                announceGameOver(g);
-            }
-       // }
+        ui.draw(g2);
 
         g.dispose();// Free resources related to g2D
-
-    }
-
-    /**
-     * displays end game message on the screen
-     * when game is over
-     * @param g for display graphics on the screen
-     */
-    public void announceGameOver(Graphics g){
-        String text = "";
-        int x;
-        int y;
-        int width;
-        FontMetrics fm;
-
-        Graphics2D g2D = (Graphics2D) g;
-
-        if(isGameOver) {
-            text = "Game Over";
-            g2D.setColor(Color.red);
-            if(didWinGame){
-                text = "Congratulation";
-                g2D.setColor(Color.yellow);
-            }
-        }
-        g2D.setFont(new Font("Courier",Font.BOLD,100));
-        fm = g2D.getFontMetrics(g2D.getFont());
-
-        width = fm.stringWidth(text);
-        x = (this.scrnWidth - width)/2;
-        y = this.scrnHeight/5;
-        g2D.drawString(text,x,y);
-
-        text = "Point: "+points;
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,75));
-        fm = g2D.getFontMetrics(g2D.getFont());
-
-        width = fm.stringWidth(text);
-        x = (this.scrnWidth - width)/2;
-        y += 125;
-        g2D.drawString(text,x,y);
-
-        text = "Time: "+ui.dFormat.format(ui.playTime);
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,75));
-        fm = g2D.getFontMetrics(g2D.getFont());
-
-        width = fm.stringWidth(text);
-        x = (this.scrnWidth - width)/2;
-        y += 75;
-        g2D.drawString(text,x,y);
-
-        text = "Restart";
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,50));
-        fm = g2D.getFontMetrics(g2D.getFont());
-
-        width = fm.stringWidth(text);
-        x = (this.scrnWidth - width)/2;
-        y += 100;
-        g2D.drawString(text,x,y);
-        if(endGameOP == 0){
-            g2D.drawString("*",x-30,y);
-        }
-
-        text = "Quit";
-        g2D.setColor(Color.white);
-        g2D.setFont(new Font("Courier",Font.BOLD,50));
-        fm = g2D.getFontMetrics(g2D.getFont());
-
-        width = fm.stringWidth(text);
-        x = (this.scrnWidth - width)/2;
-        y += 50;
-        g2D.drawString(text,x,y);
-        if(endGameOP == 1){
-            g2D.drawString("*",x-30,y);
-        }
-
     }
 
 }
