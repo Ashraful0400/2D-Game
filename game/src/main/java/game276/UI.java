@@ -26,9 +26,7 @@ public class UI {
      */
     public UI(GamePanel gp){
         this.gp = gp;
-
         arial_40 =  new Font("Arial",Font.PLAIN,40);
-
     }
 
     /**
@@ -55,18 +53,19 @@ public class UI {
 
 
         // Draw cheese left
+        // TODO - Test
         FontMetrics fm = g2.getFontMetrics(g2.getFont());
         String text = "Cheese Left: " + gp.spawner.ordinaryRewardNum;
         int width = fm.stringWidth(text);
-        g2.drawString(text, (gp.scrnWidth - width)/2, 50);
+        g2.drawString(text, (gp.scrnWidth - width)/4 * 3, 50);
     }
 
 
     public void drawTitleScreen(){
-    g2.setColor(new Color(10,10,10));
-    g2.fillRect(0,0,gp.scrnWidth,gp.scrnHeight);
+        g2.setColor(new Color(10,10,10));
+        g2.fillRect(0,0,gp.scrnWidth,gp.scrnHeight);
 
-    //TitleName
+        //Title of the game
         g2.setFont(g2.getFont().deriveFont(Font.BOLD));
         String text = "Mouse in the House";
         int x = getXforCenteredText(text);
@@ -94,10 +93,8 @@ public class UI {
             g2.drawString(">",x-gp.tileSize,y);
         }
         g2.drawString(text,x,y);
-
     }
     public int getXforCenteredText(String text){
-
         int length = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
         int x = gp.scrnWidth/2 - length/2;
         return x;

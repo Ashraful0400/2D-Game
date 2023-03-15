@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-//import barrier.*;
-
 import java.util.ArrayList;
 
 /**
@@ -124,7 +122,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             // Menu for game ending
             if (isGameOver) { 
-                displayEndGameMenu();
+                controlEndGameMenu();
             }
 
             repaint();
@@ -137,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable {
      * Must be called inside run()'s while loop
      * to receive player input
      */
-    public void displayEndGameMenu() {
+    public void controlEndGameMenu() { // TODO - Test
         if (player.keyboardInput.upKeyPressed) {
             endGameOP = 0;
         } else if (player.keyboardInput.downKeyPressed) {
@@ -163,7 +161,7 @@ public class GamePanel extends JPanel implements Runnable {
                     didWinGame = false;
                     break;
                 case 1:
-                    System.exit(0);
+                    System.exit(0); // Quit the program
                     break;
             }
         }
@@ -175,7 +173,7 @@ public class GamePanel extends JPanel implements Runnable {
      * and call collision handler when it gets called
      */
     public void update() {
-        if(gameState == playState){
+        if (gameState == playState) {
             player.move();
         }
         // player.move();
@@ -207,11 +205,13 @@ public class GamePanel extends JPanel implements Runnable {
                 allObjectLst.get(i).repaint(g); 
             }
 
+            
+            player.repaint(g);
+
+
             if(!isGameOver) {
                 ui.draw(g2);
             }
-            player.repaint(g);
-
 
             if (isGameOver) {
                 announceGameOver(g);
@@ -299,7 +299,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
     }
-
 
 }
   
