@@ -22,40 +22,37 @@ public class GamePanel extends JPanel implements Runnable {
      */
     int scale = 3;
     int ogTileSize = 16;//16x16 tile
-
     public int tileSize = ogTileSize * scale;// 48 x 48 tile
     public int maxScrnColNum = 32; 
     public int maxScrnRowNum = 20;
-    public int points;
-
-    public int endGameOP = 0;
-    public boolean didWinGame = false;
 
     int scrnWidth = maxScrnColNum * tileSize; // 1536 pixels
     int scrnHeight = maxScrnRowNum * tileSize; // 960 pixels
 
+    int fps = 60;
     Thread gThread;
 
+    public int points;
+
+    public int endGameOP = 0;
+    public boolean isGameOver; // gets toggled true no matter player loses or wins
+    public boolean didWinGame; 
 
     public Player player = new Player(this, 100, 100);
     public Spawner spawner = new Spawner(this);
+    public CollisionHandler cHandler = new CollisionHandler(this);
 
     public ArrayList<StageGameObject> allObjectLst = new ArrayList<StageGameObject>();
     public ArrayList<MovableEnemy> movEnemyLst = new ArrayList<MovableEnemy>();
     public ArrayList<PointAdjuster> pointAdjusterLst = new ArrayList<PointAdjuster>();
     public ArrayList<Barrier> barriersLst = new ArrayList<Barrier>();
-//for the menu
+
+    //for the menu
     public int gameState ;
     public final int titleState = 0;
     public int playState = 1;
 
-
-
-
-    int fps = 60;
     public UI ui = new UI(this);
-    public CollisionHandler cHandler = new CollisionHandler(this);
-    public boolean isGameOver ;
 
     /**
      * Constructor
@@ -76,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable {
      * be in the game, player is excluded
      */
     public void setUpGame(){
-        spawner.generateAllEntitiesExceptPlayer(); // gp's allObjectLst[0] == always exitDoor
+        spawner.generateAllEntitiesExceptPlayer();
         gameState = titleState;
     }
 
@@ -85,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public void startThread() {
         isGameOver = false;
+        didWinGame = false;
         gThread = new Thread(this);
         gThread.start();
     }
@@ -124,7 +122,8 @@ public class GamePanel extends JPanel implements Runnable {
                 isGameOver = true;
             }
 
-            if(isGameOver) {
+            // Menu for game ending
+            if (isGameOver) { 
                 if (player.keyboardInput.upKeyPressed) {
                     endGameOP = 0;
                 } else if (player.keyboardInput.downKeyPressed) {
@@ -155,7 +154,6 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
-
 
             repaint();
 
@@ -191,27 +189,26 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-        //Title screen(Menu0 at the beginning
-        if(gameState == titleState ){
+        // Title screen/Menu at the beginning
+        if (gameState == titleState){
             ui.draw(g2);
-        }
-        else{
+        } else {
             for (int i = 0; i < allObjectLst.size(); i++) {
-                allObjectLst.get(i).repaint(g);
-                if(!isGameOver) {
-                    ui.draw(g2);
-                }
-                player.repaint(g);
-
-
-                if (isGameOver) {
-                    announceGameOver(g);
-                }
-
-                g.dispose();// Free resources related to g2D
+                allObjectLst.get(i).repaint(g); 
             }
 
+            if(!isGameOver) {
+                ui.draw(g2);
+            }
+            player.repaint(g);
+
+
+            if (isGameOver) {
+                announceGameOver(g);
+            }
         }
+
+        g.dispose();// Free resources related to g2D
 
     }
 

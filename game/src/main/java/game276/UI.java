@@ -49,20 +49,28 @@ public class UI {
  
         }
 
-        //Time
+        // Time
         playTime += (double)1/60;
         g2.drawString("Time: " + dFormat.format(playTime),gp.tileSize*11, 65);
+
+
+        // Draw cheese left
+        FontMetrics fm = g2.getFontMetrics(g2.getFont());
+        String text = "Cheese Left: " + gp.spawner.ordinaryRewardNum;
+        int width = fm.stringWidth(text);
+        g2.drawString(text, (gp.scrnWidth - width)/2, 50);
     }
+
+
     public void drawTitleScreen(){
     g2.setColor(new Color(10,10,10));
     g2.fillRect(0,0,gp.scrnWidth,gp.scrnHeight);
 
     //TitleName
         g2.setFont(g2.getFont().deriveFont(Font.BOLD));
-        String text = "Cat And Mouse";
+        String text = "Mouse in the House";
         int x = getXforCenteredText(text);
         int y = gp.tileSize*3;
-
 
         //MainColor
         g2.setColor(Color.white);
